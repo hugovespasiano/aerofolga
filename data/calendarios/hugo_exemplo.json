@@ -1,0 +1,28 @@
+{
+  "usuario": "Hugo Vespasiano",
+  "vinculos": [
+    {
+      "instituicao": "Prefeitura Municipal de Itatiaia",
+      "cargo": "Professor",
+      "recessos": [
+        { "nome": "Recesso Escolar de Julho", "inicio": "2026-07-13", "fim": "2026-07-26" }
+      ],
+      "feriados_municipais": [
+        { "nome": "Emancipação de Itatiaia", "data": "2026-06-01" }
+      ]
+    },
+    {
+      "instituicao": "SEEDUC-RJ",
+      "cargo": "Professor",
+      "pontos_facultativos": [
+        { "nome": "Quinta-feira Santa", "data": "2026-04-02" }
+      ]
+    }
+  ],
+  "banco_de_folgas_especiais": {
+    "tre_eleicoes": {
+      "dias_disponiveis": 4,
+      "descricao": "Folgas eleitorais concedidas por trabalho nas Eleições (Art. 98 Lei 9.504/97)"
+    }
+  }
+}

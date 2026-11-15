@@ -1,0 +1,34 @@
+[
+  {
+    "origens_aceitas": ["GIG", "SDU", "GRU", "VCP", "CGH", "IZA"],
+    "destino_codigo": "SSA",
+    "destino_nome": "Salvador, Bahia",
+    "preco_medio_historico_brl": 1150,
+    "gatilho_alerta_maximo_brl": 550,
+    "tempo_maximo_conexao_horas": 3
+  },
+  {
+    "origens_aceitas": ["GIG", "SDU", "GRU", "VCP", "CGH"],
+    "destino_codigo": "FLN",
+    "destino_nome": "Florianópolis, Santa Catarina",
+    "preco_medio_historico_brl": 980,
+    "gatilho_alerta_maximo_brl": 480,
+    "tempo_maximo_conexao_horas": 2.5
+  },
+  {
+    "origens_aceitas": ["GIG", "GRU", "VCP"],
+    "destino_codigo": "EZE",
+    "destino_nome": "Buenos Aires, Argentina",
+    "preco_medio_historico_brl": 1900,
+    "gatilho_alerta_maximo_brl": 950,
+    "tempo_maximo_conexao_horas": 4
+  },
+  {
+    "origens_aceitas": ["GIG", "GRU", "VCP"],
+    "destino_codigo": "SCL",
+    "destino_nome": "Santiago, Chile",
+    "preco_medio_historico_brl": 2100,
+    "gatilho_alerta_maximo_brl": 1100,
+    "tempo_maximo_conexao_horas": 4
+  }
+]

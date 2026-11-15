@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# Builds
+.next/
+dist/
+out/
+
+# Dados locais sensíveis
+data/privado/
+*.sqlite3

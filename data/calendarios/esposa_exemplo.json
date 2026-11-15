@@ -1,0 +1,21 @@
+{
+  "usuario": "Esposa do Hugo",
+  "vinculos": [
+    {
+      "instituicao": "Prefeitura Municipal de Volta Redonda",
+      "cargo": "Servidora Pública Municipal",
+      "feriados_municipais": [
+        { "nome": "Aniversário de Volta Redonda", "data": "2026-07-17" },
+        { "nome": "Padroeiro Santo Antônio", "data": "2026-06-13" }
+      ],
+      "pontos_facultativos_previstos": [
+        { "nome": "Emenda Corpus Christi", "data": "2026-06-05" }
+      ]
+    }
+  ],
+  "banco_de_folgas_especiais": {
+    "banco_de_horas": {
+      "dias_disponiveis": 2
+    }
+  }
+}
