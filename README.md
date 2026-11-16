@@ -18,7 +18,7 @@ Em vez de perder horas abrindo abas de companhias aéreas ou lendo Diários Ofic
 
 ---
 
-## 🧠 2. Os 4 Pilares de Engenharia de Voo (Prints 177 a 180 da Mesa Estratégica)
+## 🧠 2. Os 8 Pilares de Engenharia de Voo (Prints 177 a 184 da Mesa Estratégica)
 
 O motor de pesquisa do AeroFolga não faz buscas cegas. Ele opera sob o framework de engenharia de passagens aéreas minerado no acervo da Mesa Estratégica:
 
@@ -68,6 +68,25 @@ flowchart TD
 ### Pilar 4: Auditoria de Tarifas e Scanner de Cupons (Print 180)
 * Varredura de cupons institucionais válidos, descontos de programas de fidelidade e promoções relâmpago de madrugada.
 * Elimina 100% dos cupons falsos ou expirados antes de calcular o custo final real da viagem.
+
+### Pilar 5: Scanner de Taxas Ocultas (Print 181)
+* As companhias anunciam uma "tarifa base barata", mas inflam o preço no checkout com adicionais em cascata.
+* O motor disseca e audita: cobrança de bagagem despachada, bagagem de mão fora das medidas, taxa por forma de pagamento, marcação antecipada de assento, embarque prioritário e taxas de check-in presencial no aeroporto.
+* Separação cirúrgica entre o que é **taxa opcional** e o que é **taxa inevitável** para calcular o valor real de desembolso.
+
+### Pilar 6: Auditoria de Flexibilidade e Risco (Print 182)
+* Compara as regras de alteração, cancelamento, reembolso, *no-show* e perda de conexão de cada tarifa.
+* Simula o prejuízo real em caso de imprevistos na rotina escolar (mudança de conselho de classe, reposição de aulas).
+* Identifica tarifas excessivamente punitivas (onde remarcar custa mais caro que comprar outro bilhete) e busca o ponto de equilíbrio ótimo entre economia imediata e flexibilidade.
+
+### Pilar 7: Negociação Estruturada de Tarifa (Print 183)
+* Módulo que formula mensagens curtas, formais e persuasivas para canais de atendimento das companhias, comparando a tarifa atual com a de concorrentes para solicitar cobertura de preço (*price match*) ou liberação de créditos de fidelidade.
+
+### Pilar 8: Tarifa Hidden-City & Blindagem da Resolução 400 da ANAC (Print 184)
+* **Técnica de Cidade Oculta (*Hidden-City*):** Identifica rotas onde uma passagem com escala no seu destino final é mais barata do que um voo direto para ele.
+* **Blindagem Jurídica no Brasil (Resolução 400 da ANAC):** 
+  - Regra geral das companhias: se o passageiro não embarca no primeiro trecho (ida), a volta é cancelada automaticamente (*no-show*).
+  - **A Exceção Constitucional da ANAC:** Em voos domésticos brasileiros, se o passageiro avisar a companhia aérea até o horário previsto para a decolagem do voo de ida que utilizará o trecho de volta, **a empresa não pode cancelar a passagem de volta e é proibida de cobrar qualquer taxa ou multa adicional**. O AeroFolga incorpora essa salvaguarda jurídica nos seus algoritmos de alerta.
 
 ---
 
