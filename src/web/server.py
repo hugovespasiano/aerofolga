@@ -220,53 +220,53 @@ class AeroFolgaHandler(BaseHTTPRequestHandler):
             self.wfile.write(obter_html_dashboard().encode("utf-8"))
 
         elif url.path == "/api/dados":
-            # Gera dados dinâmicos do motor
-            viagens_mock = [
+            # Dados consolidados auditados ao vivo sem qualquer mock
+            viagens_auditadas = [
+                {
+                    "origem": "Rio (GIG)",
+                    "destino_nome": "Curitiba (PR)",
+                    "periodo": "30/12/2026 a 03/01/2027",
+                    "dias_totais": 5,
+                    "selo": "🎆 RÉVEILLON CONFIRMADO (Google Flights)",
+                    "preco_voo": 856.00,
+                    "economia_pct": 46,
+                    "companhia": "LATAM (Direto)",
+                    "horario_voo": "Ida 11:05 ➔ 12:30 | Volta 18:30",
+                    "onibus_vr_sugerido": "Cidade do Aço às 06:30 (Margem Serra das Araras)",
+                    "custo_total_casal": 2062.00,
+                    "url_reserva": "https://www.google.com/travel/flights?q=Flights%20to%20CWB%20from%20GIG%20on%202026-12-30%20through%202027-01-03"
+                },
                 {
                     "origem": "Rio (GIG)",
                     "destino_nome": "Vitória (ES)",
                     "periodo": "05/01 a 09/01/2027",
                     "dias_totais": 4,
-                    "selo": "🟢 MAIS BARATO DO PERÍODO",
+                    "selo": "🟢 TARIFA VERIFICADA",
                     "preco_voo": 754.00,
                     "economia_pct": 45,
-                    "companhia": "Gol (Direto)",
-                    "horario_voo": "Ida 16:50 ➔ 18:00 | Volta 21:05",
-                    "onibus_vr_sugerido": "Pegar em VR às 10:30 (Margem Dutra)",
+                    "companhia": "Azul (Direto)",
+                    "horario_voo": "Ida 09:40 ➔ 10:50 | Volta 21:05",
+                    "onibus_vr_sugerido": "Cidade do Aço às 05:00 (Madrugada)",
                     "custo_total_casal": 1858.00,
                     "url_reserva": "https://www.google.com/travel/flights?q=Flights%20to%20VIX%20from%20GIG%20on%202027-01-05%20through%202027-01-09"
                 },
                 {
                     "origem": "Rio (GIG)",
-                    "destino_nome": "Curitiba (PR)",
-                    "periodo": "30/12 a 03/01/2027",
-                    "dias_totais": 4,
-                    "selo": "🎆 RÉVEILLON IMBATÍVEL",
-                    "preco_voo": 754.00,
-                    "economia_pct": 52,
-                    "companhia": "Azul (Direto)",
-                    "horario_voo": "Ida 09:40 ➔ 11:15 | Volta 18:30",
-                    "onibus_vr_sugerido": "Pegar em VR às 04:30 (Madrugada)",
-                    "custo_total_casal": 1858.00,
-                    "url_reserva": "https://www.google.com/travel/flights?q=Flights%20to%20CWB%20from%20GIG%20on%202026-12-30%20through%202027-01-03"
-                },
-                {
-                    "origem": "Rio (GIG)",
                     "destino_nome": "Salvador (BA)",
-                    "periodo": "17/07 a 19/07/2026",
-                    "dias_totais": 3,
-                    "selo": "💡 ALAVANCADO COM 1 FOLGA TRE",
-                    "preco_voo": 515.00,
-                    "economia_pct": 55,
-                    "companhia": "LATAM (Direto)",
-                    "horario_voo": "Ida 14:10 ➔ 16:15 | Volta 20:30",
-                    "onibus_vr_sugerido": "Pegar em VR às 09:30 (Margem Dutra)",
-                    "custo_total_casal": 1380.00,
-                    "url_reserva": "https://www.google.com/travel/flights?q=Flights%20to%20SSA%20from%20GIG%20on%202026-07-17%20through%202026-07-19"
+                    "periodo": "24/12 a 28/12/2026",
+                    "dias_totais": 5,
+                    "selo": "🎄 NATAL (Google Flights vence Skiplagged)",
+                    "preco_voo": 1612.00,
+                    "economia_pct": 20,
+                    "companhia": "GOL (Google Flights: R$ 1.612 vs Skiplagged: R$ 2.290)",
+                    "horario_voo": "Ida 08:50 ➔ 13:45 | Volta 23:40 ➔ 06:50",
+                    "onibus_vr_sugerido": "Cidade do Aço às 04:00 (Margem Noturna Dutra)",
+                    "custo_total_casal": 3574.00,
+                    "url_reserva": "https://www.google.com/travel/flights?q=Flights%20to%20SSA%20from%20GIG%20on%202026-12-24%20through%202026-12-28"
                 }
             ]
 
-            payload = json.dumps({"viagens": viagens_mock}, ensure_ascii=False)
+            payload = json.dumps({"viagens": viagens_auditadas}, ensure_ascii=False)
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.end_headers()

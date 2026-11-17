@@ -23,7 +23,9 @@ class PropostaVoo:
         troca_aeroporto: bool = False,
         mala_de_mao_inclusa: bool = True,
         chega_no_dia_seguinte: bool = False,
-        url_reserva: str = ""
+        url_reserva: str = "",
+        horario_ida: str = "",
+        horario_volta: str = ""
     ):
         self.origem = origem
         self.destino = destino
@@ -39,6 +41,8 @@ class PropostaVoo:
         self.mala_de_mao_inclusa = mala_de_mao_inclusa
         self.chega_no_dia_seguinte = chega_no_dia_seguinte
         self.url_reserva = url_reserva
+        self.horario_ida = horario_ida
+        self.horario_volta = horario_volta
 
         # Cálculo da economia
         if preco_historico_brl > 0:
@@ -66,6 +70,8 @@ class PropostaVoo:
             "duracao_total_viagem_horas": self.duracao_total_viagem_horas,
             "chega_no_dia_seguinte": self.chega_no_dia_seguinte,
             "mala_mao_inclusa": self.mala_de_mao_inclusa,
+            "horario_ida": self.horario_ida,
+            "horario_volta": self.horario_volta,
             "url_reserva": self.url_reserva
         }
 

@@ -91,7 +91,13 @@ def consultar_voo_com_blindagem(
             preco_final = preco_minimo_blindado
 
         cia = menor_lista.airlines[0] if menor_lista and menor_lista.airlines else "Cia Aérea"
-        
+
+        h_ida = ""
+        if menor_lista and getattr(menor_lista, 'flights', None) and len(menor_lista.flights) > 0:
+            sf = menor_lista.flights[0]
+            if hasattr(sf, 'departure') and hasattr(sf.departure, 'time') and hasattr(sf, 'arrival') and hasattr(sf.arrival, 'time'):
+                h_ida = f"{sf.departure.time[0]:02d}:{sf.departure.time[1]:02d} ➔ {sf.arrival.time[0]:02d}:{sf.arrival.time[1]:02d}"
+
         url = f"https://www.google.com/travel/flights?q=Flights%20to%20{destino}%20from%20{origem}%20on%20{data_ida}%20through%20{data_volta}"
 
         return {
@@ -104,8 +110,67 @@ def consultar_voo_com_blindagem(
             "trava_conexao_ativa": True,
             "max_espera_horas": max_escala_minutos / 60,
             "companhia": cia,
+            "horario_ida": h_ida,
+            "horario_volta": "",
             "url": url
         }
     except Exception as e:
         print(f"Erro na consulta blindada: {e}")
         return None
+
+
+def carregar_destinos_homologados(caminho_destinos: str = "data/destinos.json") -> List[Dict[str, Any]]:
+    """Carrega as rotas cadastradas em destinos.json."""
+    path = Path(caminho_destinos)
+    if not path.exists():
+        path = Path(__file__).parent.parent.parent / "data" / "destinos.json"
+
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def simular_radar_na_janela(
+    inicio_iso: str,
+    fim_iso: str,
+    destinos: Optional[List[Dict[str, Any]]] = None
+) -> List[PropostaVoo]:
+    """
+    Gera oportunidades de voo para a janela especificada, aplicando a blindagem e os 4 Pilares.
+    """
+    if destinos is None:
+        destinos = carregar_destinos_homologados()
+
+    oportunidades_aprovadas: List[PropostaVoo] = []
+
+    for d in destinos:
+        origens = d.get("origens_aceitas", ["GIG", "GRU"])
+        destino_codigo = d["destino_codigo"]
+        preco_historico = d["preco_medio_historico_brl"]
+        gatilho_maximo = d["gatilho_alerta_maximo_brl"]
+
+        for origem in origens[:1]:  # Prioriza Galeão
+            preco_simulado = gatilho_maximo - 35.0
+
+            link = f"https://www.google.com/travel/flights?q=Flights%20to%20{destino_codigo}%20from%20{origem}%20on%20{inicio_iso}%20through%20{fim_iso}"
+            proposta = PropostaVoo(
+                origem=origem,
+                destino=destino_codigo,
+                data_ida=inicio_iso,
+                data_volta=fim_iso,
+                companhia="LATAM",
+                preco_brl=preco_simulado,
+                preco_historico_brl=preco_historico,
+                num_escalas=0,
+                duracao_conexao_horas=0.0,
+                duracao_total_viagem_horas=2.0,
+                troca_aeroporto=False,
+                mala_de_mao_inclusa=True,
+                chega_no_dia_seguinte=False,
+                url_reserva=link
+            )
+
+            aprovado, motivo = auditar_voo_pelos_4_pilares(proposta)
+            if aprovado:
+                oportunidades_aprovadas.append(proposta)
+
+    return oportunidades_aprovadas
