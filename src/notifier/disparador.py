@@ -1,13 +1,30 @@
 """
 disparador.py — AeroFolga / Vespasiano Labs
 Disparador de alertas nos canais do casal (Console, Telegram, WhatsApp).
+Carrega automaticamente credenciais do arquivo .env.
 """
 
 import os
 import json
 import urllib.request
 import urllib.parse
+from pathlib import Path
 from typing import Optional
+
+
+def carregar_env():
+    """Carregador leve e nativo de variáveis do .env sem dependências externas."""
+    env_path = Path(__file__).parent.parent.parent / ".env"
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, val = line.split("=", 1)
+                    key = key.strip()
+                    val = val.strip().strip("'\"")
+                    if key not in os.environ:
+                        os.environ[key] = val
 
 
 class DisparadorAlerta:
@@ -19,6 +36,7 @@ class DisparadorAlerta:
         whatsapp_api_key: Optional[str] = None,
         whatsapp_numero: Optional[str] = None
     ):
+        carregar_env()
         self.telegram_token = telegram_token or os.getenv("TELEGRAM_BOT_TOKEN")
         self.telegram_chat_id = telegram_chat_id or os.getenv("TELEGRAM_CHAT_ID")
         self.whatsapp_api_url = whatsapp_api_url or os.getenv("EVOLUTION_API_URL")
@@ -52,7 +70,10 @@ class DisparadorAlerta:
                 headers={"Content-Type": "application/json"}
             )
             with urllib.request.urlopen(req, timeout=10) as resp:
-                return resp.status == 200
+                if resp.status == 200:
+                    print("✅ Alerta enviado com sucesso para o Telegram!")
+                    return True
+                return False
         except Exception as e:
             print(f"⚠️ Erro ao disparar no Telegram: {e}")
             return False
@@ -62,7 +83,8 @@ class DisparadorAlerta:
         if not self.whatsapp_api_url or not self.whatsapp_numero:
             return False
 
-        endpoint = f"{self.whatsapp_api_url.rstrip('/')}/message/sendText/{os.getenv('EVOLUTION_INSTANCE_NAME', 'aerofolga')}"
+        instancia = os.getenv("EVOLUTION_INSTANCE_NAME", "aerofolga")
+        endpoint = f"{self.whatsapp_api_url.rstrip('/')}/message/sendText/{instancia}"
         payload = {
             "number": self.whatsapp_numero,
             "text": mensagem
@@ -78,7 +100,10 @@ class DisparadorAlerta:
                 }
             )
             with urllib.request.urlopen(req, timeout=10) as resp:
-                return resp.status in (200, 201)
+                if resp.status in (200, 201):
+                    print("✅ Alerta enviado com sucesso para o WhatsApp!")
+                    return True
+                return False
         except Exception as e:
             print(f"⚠️ Erro ao disparar no WhatsApp: {e}")
             return False
