@@ -1,0 +1,3 @@
+"""
+Módulo notifier do AeroFolga.
+"""
