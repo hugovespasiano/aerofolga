@@ -1,6 +1,7 @@
 """
 main.py — AeroFolga / Vespasiano Labs
-Ponto de entrada do sistema: cruza calendários, audita passagens e dispara alertas.
+Ponto de entrada do sistema: cruza calendários, audita passagens em múltiplos buscadores (Google Flights + Skiplagged)
+e dispara alertas reais sem qualquer simulação.
 """
 
 import sys
@@ -12,16 +13,17 @@ sys.path.append(str(Path(__file__).parent))
 
 from calendar_engine.regras_servidor import PerfilCasal
 from calendar_engine.calculadora_janelas import encontrar_janelas_ano
-from flight_engine.radar_voos import simular_radar_na_janela, carregar_destinos_homologados
+from flight_engine.consolidator import buscar_menor_tarifa_multiprovedor
+from flight_engine.radar_voos import carregar_destinos_homologados
 from notifier.formatador_alerta import formatar_alerta_whatsapp
 from notifier.disparador import DisparadorAlerta
 
 
-def executar_aerofolga(ano: int = 2026, saldo_tre: int = 4, disparar: bool = False):
-    print("=" * 60)
-    print("✈️  AEROFOLGA — RADAR INTELIGENTE DE VIAGENS EM CASAL")
-    print("    Vespasiano Labs | Sul Fluminense ⇄ Brasil/Mundo")
-    print("=" * 60)
+def executar_aerofolga(ano: int = 2026, saldo_tre: int = 4, disparar: bool = False, limite_janelas: int = 2):
+    print("=" * 65)
+    print("✈️  AEROFOLGA — RADAR INTELIGENTE MULTI-BUSCADOR (AO VIVO)")
+    print("    Google Flights + Skiplagged | Sul Fluminense ⇄ Brasil")
+    print("=" * 65)
 
     # 1. Configurar Perfil do Casal
     perfil = PerfilCasal(saldo_folgas_tre_hugo=saldo_tre)
@@ -29,36 +31,41 @@ def executar_aerofolga(ano: int = 2026, saldo_tre: int = 4, disparar: bool = Fal
     janelas = encontrar_janelas_ano(ano, perfil)
     print(f"      Encontradas {len(janelas)} janelas de viagem viáveis para {ano}.")
 
-    # 2. Executar Radar de Passagens nos 4 Pilares
-    print(f"\n[2/3] 🛫 Acionando radar de voos com os 4 Pilares da Mesa Estratégica...")
+    # 2. Executar Radar de Passagens Ao Vivo
+    print(f"\n[2/3] 🛫 Consultando tarifas REAIS no Google Flights e Skiplagged...")
     destinos = carregar_destinos_homologados()
-    print(f"      Destinos monitorados: {len(destinos)} rotas cadastradas.")
-
     disparador = DisparadorAlerta()
     alertas_gerados = 0
 
-    for janela in janelas:
-        voos = simular_radar_na_janela(
-            inicio_iso=janela.inicio.isoformat(),
-            fim_iso=janela.fim.isoformat(),
-            destinos=destinos
-        )
+    # Analisa as primeiras janelas com busca ao vivo real
+    for janela in janelas[:limite_janelas]:
+        print(f"\n🔍 Varrendo Janela: {janela.to_dict()['periodo']} ({janela.dias_totais} dias)")
+        
+        for d in destinos[:2]:  # Foca nos principais destinos homologados
+            destino_codigo = d["destino_codigo"]
+            preco_hist = float(d["preco_medio_historico_brl"])
+            
+            print(f"   -> Buscando Rio (GIG) ⇄ {destino_codigo}...", end="", flush=True)
+            voo_real = buscar_menor_tarifa_multiprovedor(
+                origem="GIG",
+                destino=destino_codigo,
+                data_ida=janela.inicio.isoformat(),
+                data_volta=janela.fim.isoformat(),
+                preco_historico=preco_hist
+            )
 
-        for voo in voos:
-            alertas_gerados += 1
-            mensagem = formatar_alerta_whatsapp(janela, voo)
-            disparador.enviar_console(mensagem)
+            if voo_real:
+                print(f" Encontrado: R$ {voo_real.preco_brl:.2f} via {voo_real.companhia}")
+                alertas_gerados += 1
+                mensagem = formatar_alerta_whatsapp(janela, voo_real)
+                disparador.enviar_console(mensagem)
 
-            if disparar:
-                # Tenta disparar no Telegram se configurado
-                disparador.enviar_telegram(mensagem)
-                # Tenta disparar no WhatsApp se configurado
-                disparador.enviar_whatsapp(mensagem)
+                if disparar:
+                    disparador.enviar_telegram(mensagem)
+            else:
+                print(" Sem disponibilidade no período.")
 
-            # Limitamos a exibir as 2 melhores propostas por janela para não sobrecarregar
-            break
-
-    print(f"\n[3/3] ✅ Concluído! {alertas_gerados} alertas de alta relevância gerados.")
+    print(f"\n[3/3] ✅ Concluído! {alertas_gerados} alertas reais gerados.")
 
 
 if __name__ == "__main__":
@@ -66,6 +73,7 @@ if __name__ == "__main__":
     parser.add_argument("--ano", type=int, default=2026, help="Ano a ser analisado (padrão: 2026)")
     parser.add_argument("--tre", type=int, default=4, help="Saldo de folgas do TRE do Hugo (padrão: 4)")
     parser.add_argument("--disparar", action="store_true", help="Dispara no Telegram/WhatsApp além do console")
+    parser.add_argument("--limite", type=int, default=2, help="Limite de janelas a consultar ao vivo (padrão: 2)")
 
     args = parser.parse_args()
-    executar_aerofolga(ano=args.ano, saldo_tre=args.tre, disparar=args.disparar)
+    executar_aerofolga(ano=args.ano, saldo_tre=args.tre, disparar=args.disparar, limite_janelas=args.limite)
