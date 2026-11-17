@@ -1,0 +1,53 @@
+{
+  "cidade_origem": "Volta Redonda, RJ",
+  "transporte_proprio": false,
+  "rotas_logisticas": {
+    "rio_de_janeiro": {
+      "empresa_onibus": "Viação Cidade do Aço",
+      "terminal_rodoviario": "Terminal Novo Rio",
+      "tarifa_onibus_trecho_brl": 65.0,
+      "tempo_onibus_horas_trecho": 2.25,
+      "pernoite_obrigatorio": false,
+      "custo_pernoite_padrao_brl": 0.0,
+      "alimentacao_transito_brl": 0.0,
+      "aeroportos": {
+        "GIG": {
+          "nome": "Aeroporto Internacional do Galeão",
+          "distancia_rodoviaria_km": 14.0,
+          "uber_medio_trecho_brl": 45.0
+        },
+        "SDU": {
+          "nome": "Aeroporto Santos Dumont",
+          "distancia_rodoviaria_km": 6.0,
+          "uber_medio_trecho_brl": 25.0
+        }
+      }
+    },
+    "sao_paulo": {
+      "empresa_onibus": "Viação Cometa",
+      "terminal_rodoviario": "Terminal Tietê",
+      "tarifa_onibus_trecho_brl": 155.0,
+      "tempo_onibus_horas_trecho": 5.75,
+      "pernoite_obrigatorio": true,
+      "custo_pernoite_padrao_brl": 250.0,
+      "alimentacao_transito_brl": 100.0,
+      "aeroportos": {
+        "GRU": {
+          "nome": "Aeroporto Internacional de Guarulhos",
+          "distancia_rodoviaria_km": 22.0,
+          "uber_medio_trecho_brl": 70.0
+        },
+        "CGH": {
+          "nome": "Aeroporto de Congonhas",
+          "distancia_rodoviaria_km": 16.0,
+          "uber_medio_trecho_brl": 55.0
+        },
+        "VCP": {
+          "nome": "Aeroporto Internacional de Viracopos (Campinas)",
+          "distancia_rodoviaria_km": 100.0,
+          "uber_medio_trecho_brl": 180.0
+        }
+      }
+    }
+  }
+}
