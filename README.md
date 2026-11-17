@@ -112,7 +112,17 @@ O usuário **nunca precisa pesquisar**. Ele apenas cadastra suas preferências u
 
 ---
 
-## 🗺️ 4. Roadmap de Produto: De Ferramenta Pessoal a SaaS Comercial
+## 🧳 4. A Carteira Offline da Folga & Roteiro Mínimo (Inspirado em `roter.in` — Print 259)
+
+O valor do AeroFolga não termina quando a passagem barata é comprada. Para fechar o ciclo de viagem sem estresse:
+
+* **Carteira de Vouchers 100% Offline:** O aplicativo permite armazenar as passagens aéreas em PDF, reservas de pousada/hotel e ingressos em um cofre local (PWA Offline), garantindo acesso instantâneo no celular mesmo em aeroportos sem Wi-Fi ou destinos com sinal 4G precário.
+* **Linha do Tempo Simples:** Visão cronológica dos dias da folga com horários de embarque, check-in e previsão do tempo no destino.
+* **Estética Visual de Destino (`/travelposter` — Print 245):** Geração de cartazes artísticos vintage para cada viagem planejada, inspirados na prancha de design gráfico da *The Creative Prompt Library*.
+
+---
+
+## 🗺️ 5. Roadmap de Produto: De Ferramenta Pessoal a SaaS Comercial
 
 1. **Fase 1: Laboratório Pessoal (Dogfooding - Hugo & Esposa):**
    * Configuração dos arquivos reais de calendário: Itatiaia, SEEDUC-RJ, Volta Redonda e dias de TRE.
@@ -128,6 +138,6 @@ O usuário **nunca precisa pesquisar**. Ele apenas cadastra suas preferências u
 
 ---
 
-## 🧭 5. Governança
+## 🧭 6. Governança
 
 Desenvolvido sob as diretrizes constitucionais do [`hugovespasiano/meu-template-base`](https://github.com/hugovespasiano/meu-template-base).
