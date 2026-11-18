@@ -1,13 +1,14 @@
 """
 formatador_alerta.py — AeroFolga / Vespasiano Labs
-Formatação persuasiva, objetiva e sem prolixidade das notificações para o casal,
-seguindo rigorosamente os padrões de transparência:
-- Saída ➔ Destino
-- Datas e Horários
-- Ônibus Cidade do Aço (margem Dutra / Serra das Araras)
-- Separação transparente: Por Pessoa | Total Casal | Logística VR | Custo Final Real
+Diagramação orientada à ação imediata:
+1. VALOR TOTAL CASAL E TARIFA (Topo Absoluto)
+2. ORIGEM ➔ DESTINO
+3. DATAS E HORÁRIOS DOS VOOS
+4. ÔNIBUS VOLTA REDONDA (Cidade do Aço com margem de segurança Dutra/Serra)
+5. LINK DIRETO GOOGLE VOOS
 """
 
+from typing import Optional
 from calendar_engine.calculadora_janelas import JanelaViagem
 from flight_engine.filtros_tilli import PropostaVoo
 from decision_engine.custo_porta_a_porta import calcular_logistica
@@ -28,56 +29,68 @@ def sugerir_horario_onibus(horario_ida: str, aeroporto: str) -> str:
                 if total_min < 0:
                     total_min += 24 * 60
                 h_bus = total_min // 60
-                m_bus = (total_min % 60 // 30) * 30  # Arredonda para blocos de 30 min
-                return f"Cidade do Aço às {h_bus:02d}:{m_bus:02d} (chegada com folga para raio-X e Serra das Araras)"
+                m_bus = (total_min % 60 // 30) * 30  # Blocos de 30 minutos
+                return f"Cidade do Aço às {h_bus:02d}:{m_bus:02d} (chegada ~2h antes do voo, com folga para a Serra das Araras)"
             except Exception:
                 pass
-        return "Cidade do Aço com 4h a 5h de antecedência do voo (margem de segurança Serra das Araras)"
+        return "Cidade do Aço com 4h a 5h de antecedência do voo (margem Dutra / Serra das Araras)"
     else:
         return "Viação Cometa (VR ➔ Tietê) no dia anterior + Pernoite de segurança em SP"
 
 
-def formatar_alerta_whatsapp(janela: JanelaViagem, voo: PropostaVoo) -> str:
+def formatar_alerta_novo_padrao(
+    origem: str,
+    origem_nome: str,
+    destino: str,
+    destino_nome: str,
+    datas_label: str,
+    tarifa_pessoa: float,
+    cia_aerea: str,
+    horario_ida: str,
+    horario_volta: str,
+    onibus_detalhe: str,
+    url_reserva: str,
+    modo: str = "html"
+) -> str:
     """
-    Formatação oficial de alta clareza do AeroFolga.
+    Gera a mensagem com a nova diagramação solicitada pelo Hugo:
+    Valores e Rota nas PRIMEIRAS linhas.
     """
-    log = calcular_logistica(voo.origem)
-    passagens_casal = voo.preco_brl * 2
-    custo_logistico_casal = log.custo_logistico_total
-    custo_final_casal = passagens_casal + custo_logistico_casal
+    passagens_casal = tarifa_pessoa * 2
+    custo_logistica = 350.0 if origem in ("GIG", "SDU") else 1110.0
+    custo_final_casal = passagens_casal + custo_logistica
 
-    horarios_bloco = ""
-    if voo.horario_ida:
-        horarios_bloco += f"• *Horário Ida:* {voo.horario_ida}\n"
-    if voo.horario_volta:
-        horarios_bloco += f"• *Horário Volta:* {voo.horario_volta}\n"
+    if modo == "html":
+        return f"""💰 <b>R$ {custo_final_casal:,.2f} TOTAL CASAL</b> (Porta a Porta)
+   ↳ Passagens Casal: R$ {passagens_casal:,.2f} (R$ {tarifa_pessoa:,.2f}/pessoa ida e volta)
+   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço + Uber {origem})
 
-    onibus_recomendado = sugerir_horario_onibus(voo.horario_ida, voo.origem)
+📍 <b>ROTA:</b> {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
+📅 <b>DATAS:</b> {datas_label}
+⏰ <b>HORÁRIOS DOS VOOS ({cia_aerea}):</b>
+   • <b>Ida:</b> {horario_ida}
+   • <b>Volta:</b> {horario_volta}
+   • Bagagem de mão 10kg + mochila inclusas
 
-    alavancagem_tre = ""
-    if janela.custo_tre > 0:
-        alavancagem_tre = f"\n💡 *Estratégia:* Conectado com {janela.custo_tre} folga(s) do TRE do Hugo."
+🚌 <b>ÔNIBUS VOLTA REDONDA:</b>
+   • {onibus_detalhe}
 
-    return f"""✈️ *[AeroFolga] Alerta Real de Viagem do Casal*
+🔗 <b>RESERVA GOOGLE VOOS:</b>
+<a href="{url_reserva}">Abrir Voo no Google Flights</a>"""
+    else:
+        return f"""💰 *R$ {custo_final_casal:,.2f} TOTAL CASAL* (Porta a Porta)
+   ↳ Passagens Casal: R$ {passagens_casal:,.2f} (R$ {tarifa_pessoa:,.2f}/pessoa ida e volta)
+   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço + Uber {origem})
 
-📍 *Rota:* {voo.origem} ➔ {voo.destino}
-📅 *Datas:* {janela.to_dict()['periodo']} ({janela.dias_totais} dias livres){alavancagem_tre}
-🛫 *Companhia:* {voo.companhia}
-{horarios_bloco}• *Conexões:* {"Voo Direto" if voo.num_escalas == 0 else f"{voo.num_escalas} escala (espera humana de {voo.duracao_conexao_horas}h)"}
-• *Bagagem:* Mochila e mala de mão inclusas
+📍 *ROTA:* {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
+📅 *DATAS:* {datas_label}
+⏰ *HORÁRIOS DOS VOOS ({cia_aerea}):*
+   • *Ida:* {horario_ida}
+   • *Volta:* {horario_volta}
+   • Bagagem de mão 10kg + mochila inclusas
 
-💰 *Detalhamento Transparente de Custos:*
-• *Tarifa Aérea por pessoa:* *R$ {voo.preco_brl:.2f}* (Ida e Volta)
-• *Passagens do Casal (2 pessoas):* *R$ {passagens_casal:.2f}*
-• *Deslocamento Volta Redonda (Cidade do Aço + Uber):* R$ {custo_logistico_casal:.2f}
-━━━━━━━━━━━━━━━━━━━━
-🎯 *CUSTO FINAL REAL DO CASAL:* *R$ {custo_final_casal:.2f}*
+🚌 *ÔNIBUS VOLTA REDONDA:*
+   • {onibus_detalhe}
 
-🚌 *Logística Saindo de Volta Redonda:*
-• *Recomendação:* {onibus_recomendado}
-
-🔗 *Link Direto para Reserva:*
-{voo.url_reserva}
-
----
-_AeroFolga | Inteligência de Viagem sem Ilusão de Preço_"""
+🔗 *RESERVA GOOGLE VOOS:*
+{url_reserva}"""

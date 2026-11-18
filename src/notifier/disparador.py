@@ -1,15 +1,24 @@
 """
 disparador.py — AeroFolga / Vespasiano Labs
 Disparador de alertas nos canais do casal (Console, Telegram, WhatsApp).
-Carrega automaticamente credenciais do arquivo .env.
+Carrega automaticamente credenciais do arquivo .env e garante envio rápido em IPv4.
 """
 
 import os
 import json
+import socket
 import urllib.request
 import urllib.parse
 from pathlib import Path
 from typing import Optional
+
+# Blindagem contra timeout de IPv6 no Windows
+_old_getaddrinfo = socket.getaddrinfo
+def _ipv4_getaddrinfo(*args, **kwargs):
+    responses = _old_getaddrinfo(*args, **kwargs)
+    ipv4_res = [r for r in responses if r[0] == socket.AF_INET]
+    return ipv4_res if ipv4_res else responses
+socket.getaddrinfo = _ipv4_getaddrinfo
 
 
 def carregar_env():
@@ -51,17 +60,25 @@ class DisparadorAlerta:
         print(mensagem)
         print("=" * 55 + "\n")
 
-    def enviar_telegram(self, mensagem: str) -> bool:
-        """Envia para o bot do Telegram do casal."""
+    def enviar_telegram(self, mensagem: str, parse_mode: str = "HTML") -> bool:
+        """
+        Envia para o bot do Telegram do casal com fallback automático para texto puro
+        caso haja erro de marcação.
+        """
         if not self.telegram_token or not self.telegram_chat_id:
+            print("⚠️ Telegram token ou chat_id não configurados.")
             return False
 
         url = f"https://api.telegram.org/bot{self.telegram_token}/sendMessage"
+        
+        # 1. Tentativa com parse_mode (padrão HTML)
         payload = {
             "chat_id": self.telegram_chat_id,
             "text": mensagem,
-            "parse_mode": "Markdown"
+            "disable_web_page_preview": False
         }
+        if parse_mode:
+            payload["parse_mode"] = parse_mode
 
         try:
             req = urllib.request.Request(
@@ -73,8 +90,25 @@ class DisparadorAlerta:
                 if resp.status == 200:
                     print("✅ Alerta enviado com sucesso para o Telegram!")
                     return True
-                return False
         except Exception as e:
+            # Fallback para envio em texto simples sem formatação
+            if parse_mode:
+                try:
+                    payload.pop("parse_mode", None)
+                    # Limpa tags HTML simples caso o modo HTML tenha falhado
+                    import re
+                    payload["text"] = re.sub(r"<[^>]+>", "", mensagem)
+                    req_fallback = urllib.request.Request(
+                        url,
+                        data=json.dumps(payload).encode("utf-8"),
+                        headers={"Content-Type": "application/json"}
+                    )
+                    with urllib.request.urlopen(req_fallback, timeout=10) as resp_fb:
+                        if resp_fb.status == 200:
+                            print("✅ Alerta enviado com sucesso para o Telegram (fallback texto puro)!")
+                            return True
+                except Exception as e_fb:
+                    print(f"⚠️ Erro no fallback Telegram: {e_fb}")
             print(f"⚠️ Erro ao disparar no Telegram: {e}")
             return False
 
