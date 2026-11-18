@@ -1,0 +1,182 @@
+{
+  "GIG_VIX_2026-12-23_2026-12-27": {
+    "menor_preco": 1518,
+    "primeira_descoberta": "2026-11-17T23:05:04.532149",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1518
+  },
+  "GIG_CNF_2026-12-23_2026-12-27": {
+    "menor_preco": 1228,
+    "primeira_descoberta": "2026-11-17T23:05:04.534146",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1228
+  },
+  "GIG_FLN_2026-12-23_2026-12-27": {
+    "menor_preco": 1437,
+    "primeira_descoberta": "2026-11-17T23:05:04.534146",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1437
+  },
+  "GIG_BSB_2026-12-23_2026-12-27": {
+    "menor_preco": 1406,
+    "primeira_descoberta": "2026-11-17T23:05:04.535149",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1406
+  },
+  "GIG_CWB_2026-12-23_2026-12-27": {
+    "menor_preco": 1168,
+    "primeira_descoberta": "2026-11-17T23:05:04.535149",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1168
+  },
+  "GIG_VIX_2026-12-30_2027-01-03": {
+    "menor_preco": 1413,
+    "primeira_descoberta": "2026-11-17T23:05:04.535149",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1413
+  },
+  "GIG_CWB_2026-12-30_2027-01-03": {
+    "menor_preco": 855,
+    "primeira_descoberta": "2026-11-17T23:05:04.536147",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 855
+  },
+  "GIG_CNF_2026-12-30_2027-01-03": {
+    "menor_preco": 922,
+    "primeira_descoberta": "2026-11-17T23:05:06.517519",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 922
+  },
+  "GIG_SSA_2026-12-23_2026-12-27": {
+    "menor_preco": 1560,
+    "primeira_descoberta": "2026-11-17T23:05:08.513711",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1560
+  },
+  "GIG_BSB_2026-12-30_2027-01-03": {
+    "menor_preco": 991,
+    "primeira_descoberta": "2026-11-17T23:05:08.515362",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 991
+  },
+  "GIG_FLN_2026-12-30_2027-01-03": {
+    "menor_preco": 1783,
+    "primeira_descoberta": "2026-11-17T23:05:08.515362",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1783
+  },
+  "GIG_CWB_2026-12-31_2027-01-04": {
+    "menor_preco": 836,
+    "primeira_descoberta": "2026-11-17T23:05:08.516403",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 836
+  },
+  "GIG_SSA_2026-12-30_2027-01-03": {
+    "menor_preco": 2421,
+    "primeira_descoberta": "2026-11-17T23:05:10.314791",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 2421
+  },
+  "GIG_VIX_2026-12-31_2027-01-04": {
+    "menor_preco": 1394,
+    "primeira_descoberta": "2026-11-17T23:05:10.317591",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1394
+  },
+  "GIG_CNF_2026-12-31_2027-01-04": {
+    "menor_preco": 1077,
+    "primeira_descoberta": "2026-11-17T23:05:10.319328",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1077
+  },
+  "GIG_FLN_2026-12-31_2027-01-04": {
+    "menor_preco": 1457,
+    "primeira_descoberta": "2026-11-17T23:05:10.320138",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 1457
+  },
+  "GIG_VIX_2027-01-04_2027-01-08": {
+    "menor_preco": 974,
+    "primeira_descoberta": "2026-11-17T23:05:10.320138",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 974
+  },
+  "GIG_SSA_2026-12-31_2027-01-04": {
+    "menor_preco": 2139,
+    "primeira_descoberta": "2026-11-17T23:05:10.320138",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 2139
+  },
+  "GIG_CWB_2027-01-04_2027-01-08": {
+    "menor_preco": 928,
+    "primeira_descoberta": "2026-11-17T23:05:10.320138",
+    "ultima_verificacao": "2026-11-17T23:05:31.429225",
+    "ultimo_alerta_enviado": 928
+  },
+  "GIG_BSB_2026-12-31_2027-01-04": {
+    "menor_preco": 931,
+    "primeira_descoberta": "2026-11-17T23:05:10.320138",
+    "ultima_verificacao": "2026-11-17T23:05:31.414812",
+    "ultimo_alerta_enviado": 931
+  },
+  "GIG_FLN_2027-01-04_2027-01-08": {
+    "menor_preco": 1444,
+    "primeira_descoberta": "2026-11-17T23:05:12.108555",
+    "ultima_verificacao": "2026-11-17T23:05:31.427916",
+    "ultimo_alerta_enviado": 1444
+  },
+  "GIG_BSB_2027-01-04_2027-01-08": {
+    "menor_preco": 2510,
+    "primeira_descoberta": "2026-11-17T23:05:12.108555",
+    "ultima_verificacao": "2026-11-17T23:05:31.427916",
+    "ultimo_alerta_enviado": 2510
+  },
+  "GIG_CNF_2027-01-04_2027-01-08": {
+    "menor_preco": 1073,
+    "primeira_descoberta": "2026-11-17T23:05:12.109562",
+    "ultima_verificacao": "2026-11-17T23:05:31.427916",
+    "ultimo_alerta_enviado": 1073
+  },
+  "GIG_SSA_2027-01-04_2027-01-08": {
+    "menor_preco": 1974,
+    "primeira_descoberta": "2026-11-17T23:05:12.109562",
+    "ultima_verificacao": "2026-11-17T23:05:31.430988",
+    "ultimo_alerta_enviado": 1974
+  },
+  "GIG_VIX_2027-01-06_2027-01-10": {
+    "menor_preco": 535,
+    "primeira_descoberta": "2026-11-17T23:05:12.110326",
+    "ultima_verificacao": "2026-11-17T23:05:31.427916",
+    "ultimo_alerta_enviado": 535
+  },
+  "GIG_CWB_2027-01-06_2027-01-10": {
+    "menor_preco": 819,
+    "primeira_descoberta": "2026-11-17T23:05:13.902388",
+    "ultima_verificacao": "2026-11-17T23:05:31.429906",
+    "ultimo_alerta_enviado": 819
+  },
+  "GIG_BSB_2027-01-06_2027-01-10": {
+    "menor_preco": 1114,
+    "primeira_descoberta": "2026-11-17T23:05:15.703009",
+    "ultima_verificacao": "2026-11-17T23:05:31.430621",
+    "ultimo_alerta_enviado": 1114
+  },
+  "GIG_FLN_2027-01-06_2027-01-10": {
+    "menor_preco": 1165,
+    "primeira_descoberta": "2026-11-17T23:05:15.703009",
+    "ultima_verificacao": "2026-11-17T23:05:31.430988",
+    "ultimo_alerta_enviado": 1165
+  },
+  "GIG_CNF_2027-01-06_2027-01-10": {
+    "menor_preco": 904,
+    "primeira_descoberta": "2026-11-17T23:05:17.484661",
+    "ultima_verificacao": "2026-11-17T23:05:31.430988",
+    "ultimo_alerta_enviado": 904
+  },
+  "GIG_SSA_2027-01-06_2027-01-10": {
+    "menor_preco": 1716,
+    "primeira_descoberta": "2026-11-17T23:05:19.276724",
+    "ultima_verificacao": "2026-11-17T23:05:31.430988",
+    "ultimo_alerta_enviado": 1716
+  }
+}

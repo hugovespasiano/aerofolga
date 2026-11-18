@@ -1,0 +1,50 @@
+{
+  "VIX": {
+    "nome": "Vitória (ES)",
+    "piso_baixa_temporada": 240,
+    "piso_alta_temporada": 520,
+    "preco_medio_tipico": 850,
+    "meses_mais_baratos": "Maio, Agosto, Setembro",
+    "comentario": "Rota curta com ponte frequente Gol/LATAM. Menos de R$ 550 no Réveillon/Janeiro é raridade absoluta."
+  },
+  "CWB": {
+    "nome": "Curitiba (PR)",
+    "piso_baixa_temporada": 320,
+    "piso_alta_temporada": 780,
+    "preco_medio_tipico": 1050,
+    "meses_mais_baratos": "Abril, Maio, Outubro",
+    "comentario": "Muita concorrência Gol/LATAM/Azul. Abaixo de R$ 900 na virada do ano é excelente negócio."
+  },
+  "CNF": {
+    "nome": "Belo Horizonte (MG)",
+    "piso_baixa_temporada": 260,
+    "piso_alta_temporada": 700,
+    "preco_medio_tipico": 900,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Frequência intensa diária. Fácil achar por ~R$ 300 fora de época, mas no Réveillon gira em R$ 1.000+."
+  },
+  "BSB": {
+    "nome": "Brasília (DF)",
+    "piso_baixa_temporada": 290,
+    "piso_alta_temporada": 750,
+    "preco_medio_tipico": 1100,
+    "meses_mais_baratos": "Janeiro (fim), Junho, Novembro",
+    "comentario": "Capital costuma esvaziar no recesso de fim de ano, gerando boas promoções no Réveillon."
+  },
+  "FLN": {
+    "nome": "Florianópolis (SC)",
+    "piso_baixa_temporada": 420,
+    "piso_alta_temporada": 1100,
+    "preco_medio_tipico": 1450,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Destino de altíssima demanda de verão. Qualquer passagem abaixo de R$ 1.200 em janeiro é ótima."
+  },
+  "SSA": {
+    "nome": "Salvador (BA)",
+    "piso_baixa_temporada": 550,
+    "piso_alta_temporada": 1400,
+    "preco_medio_tipico": 1900,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Verão baiano é caríssimo. R$ 1.500 no Natal/Janeiro é o piso prático."
+  }
+}
