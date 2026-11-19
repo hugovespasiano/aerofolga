@@ -4,7 +4,7 @@ Diagramação orientada à ação imediata:
 1. VALOR TOTAL CASAL E TARIFA (Topo Absoluto)
 2. ORIGEM ➔ DESTINO
 3. DATAS E HORÁRIOS DOS VOOS
-4. ÔNIBUS VOLTA REDONDA (Cidade do Aço com margem de segurança Dutra/Serra)
+4. ÔNIBUS VOLTA REDONDA (Cidade do Aço com 3h a 3h30 de folga no aeroporto + margem Serra)
 5. LINK DIRETO GOOGLE VOOS
 """
 
@@ -17,23 +17,25 @@ from decision_engine.custo_porta_a_porta import calcular_logistica
 def sugerir_horario_onibus(horario_ida: str, aeroporto: str) -> str:
     """
     Calcula o horário recomendado de embarque na Rodoviária de Volta Redonda
-    com margem de 4h a 5h de segurança para a Dutra e Serra das Araras.
+    garantindo entre 3h00 e 3h30 de antecedência LÍQUIDA no aeroporto
+    além do tempo de trajeto (Serra das Araras + Dutra + Uber).
+    Total de folga recomendada antes da decolagem: ~5h30 a 6h00.
     """
     if aeroporto in ("GIG", "SDU"):
         if horario_ida and "➔" in horario_ida:
             try:
                 hora_partida_str = horario_ida.split("➔")[0].strip()
                 h, m = map(int, hora_partida_str.split(":"))
-                # Subtrai 4h30min de antecedência
-                total_min = h * 60 + m - 270
+                # Subtrai 5h45min (345 min) para garantir 3h15 de folga no aeroporto
+                total_min = h * 60 + m - 345
                 if total_min < 0:
                     total_min += 24 * 60
                 h_bus = total_min // 60
-                m_bus = (total_min % 60 // 30) * 30  # Blocos de 30 minutos
-                return f"Cidade do Aço às {h_bus:02d}:{m_bus:02d} (chegada ~2h antes do voo, com folga para a Serra das Araras)"
+                m_bus = (total_min % 60 // 30) * 30  # Blocos de 30 min (ex: 12:30, 13:00)
+                return f"Embarque às {h_bus:02d}:{m_bus:02d} (Cidade do Aço - Rodoviária Francisco Torres). Chegada prevista ao {aeroporto} ~3h a 3h30 antes do voo, garantindo total tranquilidade contra retenções na Serra das Araras e filas no aeroporto."
             except Exception:
                 pass
-        return "Cidade do Aço com 4h a 5h de antecedência do voo (margem Dutra / Serra das Araras)"
+        return "Cidade do Aço com 5h30 a 6h de antecedência do voo (garante 3h a 3h30 de folga líquida no aeroporto)"
     else:
         return "Viação Cometa (VR ➔ Tietê) no dia anterior + Pernoite de segurança em SP"
 

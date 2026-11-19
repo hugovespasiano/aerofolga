@@ -17,7 +17,7 @@ sys.path.append(str(Path(__file__).parent))
 from fast_flights import FlightQuery, Passengers, create_query, get_flights
 from flight_engine.vigilante import VigilantePrecos
 from notifier.disparador import DisparadorAlerta
-from notifier.formatador_alerta import formatar_alerta_novo_padrao
+from notifier.formatador_alerta import formatar_alerta_novo_padrao, sugerir_horario_onibus
 
 # Janelas prioritárias do casal (Férias e Réveillon)
 JANELAS_PRIORITARIAS = [
@@ -139,7 +139,7 @@ def executar_ronda():
                 cia_aerea=voo["cia"],
                 horario_ida=voo["horario_ida"],
                 horario_volta=voo["horario_volta"],
-                onibus_detalhe=f"Cidade do Aço com margem de 4h a 5h na Rodoviária Francisco Torres.",
+                onibus_detalhe=sugerir_horario_onibus(voo["horario_ida"], voo["origem"]),
                 url_reserva=voo["url"],
                 modo="html"
             )
