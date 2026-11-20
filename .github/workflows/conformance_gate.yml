@@ -1,0 +1,24 @@
+name: Foundation Conformance Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  conformance:
+    name: Vespasiano Labs Architecture & Security Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Foundation Conformance Linter
+        run: node scripts/audit-conformance.js

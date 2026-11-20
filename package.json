@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "audit:conformance": "node scripts/audit-conformance.js"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.6",
