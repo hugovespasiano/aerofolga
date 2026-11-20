@@ -71,7 +71,7 @@ def consultar_par(orig, dest_info, d_ida, d_volta, label):
 
         url = f"https://www.google.com/travel/flights?q=Flights%20to%20{dest}%20from%20{orig}%20on%20{d_ida}%20through%20{d_volta}"
 
-        orig_nome = "Rio de Janeiro" if orig == "GIG" else "São Paulo (Guarulhos)"
+        orig_nome = {"GIG": "Rio de Janeiro (Galeão)", "GRU": "São Paulo (Guarulhos)", "CGH": "São Paulo (Congonhas)"}.get(orig, orig)
         return {
             "origem": orig,
             "origem_nome": orig_nome,
@@ -98,9 +98,10 @@ def executar_ronda():
     tarefas = []
     for d_ida, d_volta, label, is_alta in JANELAS_PRIORITARIAS:
         for dest in DESTINOS:
-            # Varre Galeão (GIG) e Guarulhos (GRU) simultaneamente
+            # Varre Galeão (GIG), Guarulhos (GRU) e Congonhas (CGH) simultaneamente
             tarefas.append(("GIG", dest, d_ida, d_volta, label))
             tarefas.append(("GRU", dest, d_ida, d_volta, label))
+            tarefas.append(("CGH", dest, d_ida, d_volta, label))
 
     encontrados = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:

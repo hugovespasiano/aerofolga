@@ -36,6 +36,10 @@ def sugerir_horario_onibus(horario_ida: str, aeroporto: str) -> str:
             except Exception:
                 pass
         return "Cidade do Aço com 5h30 a 6h de antecedência do voo (garante 3h a 3h30 de folga líquida no aeroporto)"
+    elif aeroporto == "CGH":
+        return "Viação Cometa (VR ➔ Terminal Tietê) + Uber Tietê ➔ Congonhas (~35 min pelo Corredor Norte-Sul). Recomendado sair com 8h a 9h de antecedência do voo."
+    elif aeroporto == "GRU":
+        return "Viação Cometa (VR ➔ Terminal Tietê) + Uber Tietê ➔ Guarulhos (~35 min). Recomendado sair com 8h a 9h de antecedência do voo."
     else:
         return "Viação Cometa (VR ➔ Tietê) no dia anterior + Pernoite de segurança em SP"
 
@@ -59,7 +63,14 @@ def formatar_alerta_novo_padrao(
     Valores e Rota nas PRIMEIRAS linhas.
     """
     passagens_casal = tarifa_pessoa * 2
-    custo_logistica = 350.0 if origem in ("GIG", "SDU") else 1110.0
+    if origem in ("GIG", "SDU"):
+        custo_logistica = 350.0
+    elif origem == "CGH":
+        custo_logistica = 730.0
+    elif origem == "GRU":
+        custo_logistica = 760.0
+    else:
+        custo_logistica = 1110.0
     custo_final_casal = passagens_casal + custo_logistica
 
     if modo == "html":
