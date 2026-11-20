@@ -1,8 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { hasEnvVars } from "../utils";
-import { getAccessProfile } from "@/lib/access/service";
 import { hasAccess } from "@/lib/access/helpers";
+import type { Profile } from "@/types/access";
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -50,10 +50,16 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    // 2. Ler Profile via Abstração
-    const profile = await getAccessProfile(user.sub);
+    // 2. Ler Profile via cliente Supabase do próprio request (Edge-safe)
+    const { data: profileData } = await supabase
+      .from("profiles")
+      .select("id, display_name, role, plan, status")
+      .eq("id", user.sub)
+      .maybeSingle();
 
-    // 3, 4, 5. Verificar regras utilizando hasAccess()
+    const profile = profileData ? (profileData as Profile) : null;
+
+    // 3. Verificar regras utilizando hasAccess()
     // A rota "/protected" genérica exige apenas que a conta esteja ativa.
     if (!hasAccess(profile, { requireActive: true })) {
       const url = request.nextUrl.clone();

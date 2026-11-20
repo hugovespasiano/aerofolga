@@ -12,12 +12,15 @@ export type PaymentEventType =
   | "subscription.canceled";
 
 export interface PaymentWebhookPayload {
+  id?: string;
+  eventId?: string;
   event: PaymentEventType;
   userId: string;
   plan: Plan;
   provider: PaymentProvider;
   customerId?: string;
   subscriptionId?: string;
+  timestamp?: number;
   metadata?: Record<string, unknown>;
 }
 
