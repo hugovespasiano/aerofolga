@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 
 from fast_flights import FlightQuery, Passengers, create_query, get_flights
-from calendar_engine.gerador_pontes_tre import gerar_janelas_tre_ano, JanelaAlavancadaTRE
+from calendar_engine.motor_calendario_unificado import obter_janelas_unificadas_ano, JanelaUnificada
 from flight_engine.vigilante import VigilantePrecos
 from notifier.disparador import DisparadorAlerta
 from notifier.formatador_alerta import formatar_alerta_novo_padrao, sugerir_horario_onibus
@@ -100,19 +100,26 @@ def executar_ronda():
     vigilante = VigilantePrecos()
     disparador = DisparadorAlerta()
 
-    # Monta lista de janelas a vigiar: Feriados prioritários + Janelas Alavancadas TRE
+    # Monta lista de janelas a vigiar: Feriados prioritários + Calendário Unificado Concomitante
     janelas_vigilancia = list(JANELAS_PRIORITARIAS)
 
-    # Adiciona janelas estratégicas de alavancagem TRE (Quinta a Domingo, Sábado a Terça, Sexta a Terça)
     try:
-        janelas_tre = gerar_janelas_tre_ano(2027)
-        # Seleciona as mais imediatas e com alto potencial de desconto (Março, Abril, Maio)
-        for j in janelas_tre:
-            if j.inicio.month in (3, 4, 5) and (j.modalidade in ("Quinta a Domingo", "Sábado a Terça") or j.is_extensao_feriado):
-                alav_str = f"Usa {j.folgas_tre} folga(s) TRE ({', '.join(j.dias_tre)}) — {j.descricao}"
-                janelas_vigilancia.append((j.inicio_iso, j.fim_iso, j.modalidade, False, alav_str))
+        todas_unificadas = obter_janelas_unificadas_ano(2027)
+
+        # 1. Concomitante: Adiciona TODOS os Feriados Oficiais e Pontos Facultativos 100% PUROS (0 folgas TRE)
+        puras = [j for j in todas_unificadas if j.folgas_tre_gastas == 0]
+        for p in puras:
+            janelas_vigilancia.append((p.inicio_iso, p.fim_iso, p.nome_evento, p.is_alta_temporada, None))
+
+        # 2. Concomitante: Adiciona janelas estratégicas ALAVANCADAS com TRE (1 a 2 folgas)
+        alavancadas = [j for j in todas_unificadas if j.folgas_tre_gastas > 0]
+        # Pega amostra espaçada nos meses-alvo (março a novembro) para manter o tempo de execução ágil
+        for a in alavancadas:
+            if a.inicio.month in (3, 4, 5, 8, 9, 10):
+                alav_str = f"Usa {a.folgas_tre_gastas} folga(s) TRE ({', '.join(a.dias_tre)}) — {a.detalhes}"
+                janelas_vigilancia.append((a.inicio_iso, a.fim_iso, a.nome_evento, a.is_alta_temporada, alav_str))
     except Exception as e:
-        print(f"Aviso: Não foi possível carregar janelas TRE: {e}")
+        print(f"Aviso: Não foi possível carregar calendário unificado: {e}")
 
     tarefas = []
     for d_ida, d_volta, label, is_alta, alav in janelas_vigilancia:

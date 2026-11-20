@@ -112,8 +112,12 @@ def formatar_alerta_novo_padrao(
         bloco_economia_html = f"""🏷️ <b>MERCADO EM ALTA:</b> R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
         bloco_economia_txt = f"""🏷️ *MERCADO EM ALTA:* R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
 
-    bloco_tre_html = f"\n🎟️ <b>ALAVANCAGEM TRE:</b> {alavancagem_tre}\n" if alavancagem_tre else ""
-    bloco_tre_txt = f"\n🎟️ *ALAVANCAGEM TRE:* {alavancagem_tre}\n" if alavancagem_tre else ""
+    if alavancagem_tre:
+        bloco_tipo_html = f"🟡 <b>TIPO DE FOLGA:</b> Alavancado TRE ({alavancagem_tre})"
+        bloco_tipo_txt = f"🟡 *TIPO DE FOLGA:* Alavancado TRE ({alavancagem_tre})"
+    else:
+        bloco_tipo_html = "🟢 <b>TIPO DE FOLGA:</b> Feriado / Ponto Facultativo (100% Puro — 0 folgas TRE)"
+        bloco_tipo_txt = "🟢 *TIPO DE FOLGA:* Feriado / Ponto Facultativo (100% Puro — 0 folgas TRE)"
 
     if modo == "html":
         return f"""💰 <b>R$ {custo_final_casal:,.2f} TOTAL CASAL</b> (Porta a Porta)
@@ -123,7 +127,8 @@ def formatar_alerta_novo_padrao(
 {bloco_economia_html}
 
 📍 <b>ROTA:</b> {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
-📅 <b>DATAS:</b> {datas_label}{bloco_tre_html}
+📅 <b>DATAS:</b> {datas_label}
+{bloco_tipo_html}
 ⏰ <b>HORÁRIOS DOS VOOS ({cia_aerea}):</b>
    • <b>Ida:</b> {horario_ida}
    • <b>Volta:</b> {horario_volta}
@@ -142,7 +147,8 @@ def formatar_alerta_novo_padrao(
 {bloco_economia_txt}
 
 📍 *ROTA:* {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
-📅 *DATAS:* {datas_label}{bloco_tre_txt}
+📅 *DATAS:* {datas_label}
+{bloco_tipo_txt}
 ⏰ *HORÁRIOS DOS VOOS ({cia_aerea}):*
    • *Ida:* {horario_ida}
    • *Volta:* {horario_volta}
