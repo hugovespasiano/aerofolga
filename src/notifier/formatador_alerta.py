@@ -1,37 +1,49 @@
 """
 formatador_alerta.py — AeroFolga / Vespasiano Labs
-Diagramação orientada à ação imediata:
+Diagramação orientada à tomada de decisão rápida e economia transparente:
 1. VALOR TOTAL CASAL E TARIFA (Topo Absoluto)
-2. ORIGEM ➔ DESTINO
-3. DATAS E HORÁRIOS DOS VOOS
-4. ÔNIBUS VOLTA REDONDA (Cidade do Aço com 3h a 3h30 de folga no aeroporto + margem Serra)
-5. LINK DIRETO GOOGLE VOOS
+2. BÚSSOLA DE PREÇO: % DE ECONOMIA + FAIXA HISTÓRICA (Médio, Mínimo e Máximo)
+3. ORIGEM ➔ DESTINO
+4. DATAS E HORÁRIOS DOS VOOS
+5. ÔNIBUS VOLTA REDONDA (Cidade do Aço com 3h a 3h30 de folga líquida no saguão)
+6. LINK DIRETO GOOGLE VOOS
 """
 
+import json
+from pathlib import Path
 from typing import Optional
 from calendar_engine.calculadora_janelas import JanelaViagem
 from flight_engine.filtros_tilli import PropostaVoo
 from decision_engine.custo_porta_a_porta import calcular_logistica
 
 
+def carregar_referencia_historica() -> dict:
+    caminho = Path(__file__).parent.parent.parent / "data" / "tabela_referencia.json"
+    if caminho.exists():
+        try:
+            with open(caminho, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
 def sugerir_horario_onibus(horario_ida: str, aeroporto: str) -> str:
     """
     Calcula o horário recomendado de embarque na Rodoviária de Volta Redonda
-    garantindo entre 3h00 e 3h30 de antecedência LÍQUIDA no aeroporto
-    além do tempo de trajeto (Serra das Araras + Dutra + Uber).
-    Total de folga recomendada antes da decolagem: ~5h30 a 6h00.
+    garantindo entre 3h00 e 3h30 de antecedência LÍQUIDA no aeroporto.
     """
     if aeroporto in ("GIG", "SDU"):
         if horario_ida and "➔" in horario_ida:
             try:
                 hora_partida_str = horario_ida.split("➔")[0].strip()
                 h, m = map(int, hora_partida_str.split(":"))
-                # Subtrai 5h45min (345 min) para garantir 3h15 de folga no aeroporto
+                # Subtrai 5h45min (345 min) para garantir 3h15 de folga líquida no aeroporto
                 total_min = h * 60 + m - 345
                 if total_min < 0:
                     total_min += 24 * 60
                 h_bus = total_min // 60
-                m_bus = (total_min % 60 // 30) * 30  # Blocos de 30 min (ex: 12:30, 13:00)
+                m_bus = (total_min % 60 // 30) * 30  # Blocos de 30 min
                 return f"Embarque às {h_bus:02d}:{m_bus:02d} (Cidade do Aço - Rodoviária Francisco Torres). Chegada prevista ao {aeroporto} ~3h a 3h30 antes do voo, garantindo total tranquilidade contra retenções na Serra das Araras e filas no aeroporto."
             except Exception:
                 pass
@@ -60,7 +72,7 @@ def formatar_alerta_novo_padrao(
 ) -> str:
     """
     Gera a mensagem com a nova diagramação solicitada pelo Hugo:
-    Valores e Rota nas PRIMEIRAS linhas.
+    Valores, % de Economia e Faixa Histórica nas PRIMEIRAS linhas.
     """
     passagens_casal = tarifa_pessoa * 2
     if origem in ("GIG", "SDU"):
@@ -73,10 +85,38 @@ def formatar_alerta_novo_padrao(
         custo_logistica = 1110.0
     custo_final_casal = passagens_casal + custo_logistica
 
+    # Análise de Ancoragem Histórica e Economia
+    ref_map = carregar_referencia_historica()
+    ref = ref_map.get(destino, {})
+
+    preco_medio = float(ref.get("preco_medio_tipico", 1000.0))
+    piso_alta = float(ref.get("piso_alta_temporada", 700.0))
+    piso_baixa = float(ref.get("piso_baixa_temporada", 300.0))
+    teto_alta = float(ref.get("teto_maximo_alta", 1800.0))
+    meses_baratos = ref.get("meses_mais_baratos", "Maio e Agosto")
+
+    if preco_medio > tarifa_pessoa:
+        economia_pct = int(round(((preco_medio - tarifa_pessoa) / preco_medio) * 100))
+        economia_casal = (preco_medio - tarifa_pessoa) * 2
+        bloco_economia_html = f"""🏷️ <b>ECONOMIA: {economia_pct}% DE DESCONTO</b> (Você poupa <b>R$ {economia_casal:,.2f}</b> no casal!)
+   • <b>Preço Médio Típico desta época:</b> R$ {preco_medio:,.2f}/pessoa (R$ {preco_medio*2:,.2f} casal)
+   • <b>Faixa Histórica:</b> Piso Feriadão: R$ {piso_alta:,.2f} | Teto em alta: R$ {teto_alta:,.2f}
+   • <i>Menor do ano (baixa estação morta): R$ {piso_baixa:,.2f} ({meses_baratos})</i>"""
+
+        bloco_economia_txt = f"""🏷️ *ECONOMIA: {economia_pct}% DE DESCONTO* (Você poupa *R$ {economia_casal:,.2f}* no casal!)
+   • *Preço Médio Típico desta época:* R$ {preco_medio:,.2f}/pessoa (R$ {preco_medio*2:,.2f} casal)
+   • *Faixa Histórica:* Piso Feriadão: R$ {piso_alta:,.2f} | Teto em alta: R$ {teto_alta:,.2f}
+   • _Menor do ano (baixa estação morta): R$ {piso_baixa:,.2f} ({meses_baratos})_"""
+    else:
+        bloco_economia_html = f"""🏷️ <b>MERCADO EM ALTA:</b> R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
+        bloco_economia_txt = f"""🏷️ *MERCADO EM ALTA:* R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
+
     if modo == "html":
         return f"""💰 <b>R$ {custo_final_casal:,.2f} TOTAL CASAL</b> (Porta a Porta)
    ↳ Passagens Casal: R$ {passagens_casal:,.2f} (R$ {tarifa_pessoa:,.2f}/pessoa ida e volta)
-   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço + Uber {origem})
+   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço/Cometa + Transfer {origem})
+
+{bloco_economia_html}
 
 📍 <b>ROTA:</b> {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
 📅 <b>DATAS:</b> {datas_label}
@@ -93,7 +133,9 @@ def formatar_alerta_novo_padrao(
     else:
         return f"""💰 *R$ {custo_final_casal:,.2f} TOTAL CASAL* (Porta a Porta)
    ↳ Passagens Casal: R$ {passagens_casal:,.2f} (R$ {tarifa_pessoa:,.2f}/pessoa ida e volta)
-   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço + Uber {origem})
+   ↳ Logística VR: R$ {custo_logistica:,.2f} (Cidade do Aço/Cometa + Transfer {origem})
+
+{bloco_economia_txt}
 
 📍 *ROTA:* {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
 📅 *DATAS:* {datas_label}

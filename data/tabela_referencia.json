@@ -2,49 +2,82 @@
   "VIX": {
     "nome": "Vitória (ES)",
     "piso_baixa_temporada": 240,
-    "piso_alta_temporada": 520,
-    "preco_medio_tipico": 850,
+    "piso_alta_temporada": 500,
+    "preco_medio_tipico": 880,
+    "teto_maximo_alta": 1650,
     "meses_mais_baratos": "Maio, Agosto, Setembro",
-    "comentario": "Rota curta com ponte frequente Gol/LATAM. Menos de R$ 550 no Réveillon/Janeiro é raridade absoluta."
+    "comentario": "Rota curta com voos diretos Gol e LATAM. Abaixo de R$ 550 em feriado é compra imediata."
   },
   "CWB": {
     "nome": "Curitiba (PR)",
     "piso_baixa_temporada": 320,
-    "piso_alta_temporada": 780,
+    "piso_alta_temporada": 750,
     "preco_medio_tipico": 1050,
+    "teto_maximo_alta": 1900,
     "meses_mais_baratos": "Abril, Maio, Outubro",
-    "comentario": "Muita concorrência Gol/LATAM/Azul. Abaixo de R$ 900 na virada do ano é excelente negócio."
+    "comentario": "Muita concorrência Gol/LATAM/Azul. Abaixo de R$ 800 em feriadão é raridade."
   },
   "CNF": {
     "nome": "Belo Horizonte (MG)",
     "piso_baixa_temporada": 260,
-    "piso_alta_temporada": 700,
-    "preco_medio_tipico": 900,
+    "piso_alta_temporada": 650,
+    "preco_medio_tipico": 920,
+    "teto_maximo_alta": 1700,
     "meses_mais_baratos": "Maio, Junho, Agosto",
-    "comentario": "Frequência intensa diária. Fácil achar por ~R$ 300 fora de época, mas no Réveillon gira em R$ 1.000+."
+    "comentario": "Frequência diária intensa. Menos de R$ 680 em feriadão é excelente negócio."
   },
   "BSB": {
     "nome": "Brasília (DF)",
     "piso_baixa_temporada": 290,
-    "piso_alta_temporada": 750,
-    "preco_medio_tipico": 1100,
-    "meses_mais_baratos": "Janeiro (fim), Junho, Novembro",
-    "comentario": "Capital costuma esvaziar no recesso de fim de ano, gerando boas promoções no Réveillon."
+    "piso_alta_temporada": 720,
+    "preco_medio_tipico": 1150,
+    "teto_maximo_alta": 2100,
+    "meses_mais_baratos": "Fim de Janeiro, Junho, Novembro",
+    "comentario": "Esvazia nos recessos e feriadões, abrindo promoções raras abaixo de R$ 750."
   },
   "FLN": {
     "nome": "Florianópolis (SC)",
     "piso_baixa_temporada": 420,
-    "piso_alta_temporada": 1100,
+    "piso_alta_temporada": 950,
     "preco_medio_tipico": 1450,
+    "teto_maximo_alta": 2600,
     "meses_mais_baratos": "Maio, Junho, Agosto",
-    "comentario": "Destino de altíssima demanda de verão. Qualquer passagem abaixo de R$ 1.200 em janeiro é ótima."
+    "comentario": "Altíssima demanda de turismo. Qualquer tarifa abaixo de R$ 1.000 em feriado é imperdível."
+  },
+  "NVT": {
+    "nome": "Navegantes / Beto Carrero (SC)",
+    "piso_baixa_temporada": 380,
+    "piso_alta_temporada": 850,
+    "preco_medio_tipico": 1380,
+    "teto_maximo_alta": 2400,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Destino concorrido de praia e parque. Abaixo de R$ 850 é compra sem pensar."
   },
   "SSA": {
     "nome": "Salvador (BA)",
     "piso_baixa_temporada": 550,
-    "piso_alta_temporada": 1400,
+    "piso_alta_temporada": 1350,
     "preco_medio_tipico": 1900,
+    "teto_maximo_alta": 3200,
     "meses_mais_baratos": "Maio, Junho, Agosto",
-    "comentario": "Verão baiano é caríssimo. R$ 1.500 no Natal/Janeiro é o piso prático."
+    "comentario": "Verão baiano é o mais caro do país. Abaixo de R$ 1.400 em feriado é muito difícil."
+  },
+  "IGU": {
+    "nome": "Foz do Iguaçu (PR)",
+    "piso_baixa_temporada": 480,
+    "piso_alta_temporada": 1100,
+    "preco_medio_tipico": 1650,
+    "teto_maximo_alta": 2800,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Destino internacional das Cataratas. Menos de R$ 1.100 é uma pechincha."
+  },
+  "REC": {
+    "nome": "Recife (PE)",
+    "piso_baixa_temporada": 590,
+    "piso_alta_temporada": 1500,
+    "preco_medio_tipico": 2100,
+    "teto_maximo_alta": 3500,
+    "meses_mais_baratos": "Maio, Junho, Agosto",
+    "comentario": "Porta de entrada do Nordeste. Abaixo de R$ 1.500 em feriadão é raro."
   }
 }
