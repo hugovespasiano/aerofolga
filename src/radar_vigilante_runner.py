@@ -15,17 +15,18 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 
 from fast_flights import FlightQuery, Passengers, create_query, get_flights
+from calendar_engine.gerador_pontes_tre import gerar_janelas_tre_ano, JanelaAlavancadaTRE
 from flight_engine.vigilante import VigilantePrecos
 from notifier.disparador import DisparadorAlerta
 from notifier.formatador_alerta import formatar_alerta_novo_padrao, sugerir_horario_onibus
 
 # Janelas prioritárias do casal (Férias e Réveillon)
 JANELAS_PRIORITARIAS = [
-    ("2026-12-23", "2026-12-27", "Natal (23/12 a 27/12)", True),
-    ("2026-12-30", "2027-01-03", "Réveillon (30/12 a 03/01)", True),
-    ("2026-12-31", "2027-01-04", "Réveillon (31/12 a 04/01)", True),
-    ("2027-01-04", "2027-01-08", "Janeiro (04/01 a 08/01)", True),
-    ("2027-01-06", "2027-01-10", "Janeiro (06/01 a 10/01)", True)
+    ("2026-12-23", "2026-12-27", "Natal (23/12 a 27/12)", True, None),
+    ("2026-12-30", "2027-01-03", "Réveillon (30/12 a 03/01)", True, None),
+    ("2026-12-31", "2027-01-04", "Réveillon (31/12 a 04/01)", True, None),
+    ("2027-01-04", "2027-01-08", "Janeiro (04/01 a 08/01)", True, None),
+    ("2027-01-06", "2027-01-10", "Janeiro (06/01 a 10/01)", True, None)
 ]
 
 DESTINOS = [
@@ -34,11 +35,13 @@ DESTINOS = [
     {"cod": "CNF", "nome": "Belo Horizonte (MG)"},
     {"cod": "BSB", "nome": "Brasília (DF)"},
     {"cod": "FLN", "nome": "Florianópolis (SC)"},
+    {"cod": "NVT", "nome": "Navegantes (SC)"},
+    {"cod": "IGU", "nome": "Foz do Iguaçu (PR)"},
     {"cod": "SSA", "nome": "Salvador (BA)"}
 ]
 
 
-def consultar_par(orig, dest_info, d_ida, d_volta, label):
+def consultar_par(orig, dest_info, d_ida, d_volta, label, is_alta, alavancagem_tre):
     dest = dest_info["cod"]
     try:
         q = create_query(
@@ -80,6 +83,8 @@ def consultar_par(orig, dest_info, d_ida, d_volta, label):
             "data_ida": d_ida,
             "data_volta": d_volta,
             "label": label,
+            "is_alta": is_alta,
+            "alavancagem_tre": alavancagem_tre,
             "preco": melhor.price,
             "cia": cia,
             "horario_ida": h_ida,
@@ -95,16 +100,30 @@ def executar_ronda():
     vigilante = VigilantePrecos()
     disparador = DisparadorAlerta()
 
-    tarefas = []
-    for d_ida, d_volta, label, is_alta in JANELAS_PRIORITARIAS:
-        for dest in DESTINOS:
-            # Varre Galeão (GIG), Guarulhos (GRU) e Congonhas (CGH) simultaneamente
-            tarefas.append(("GIG", dest, d_ida, d_volta, label))
-            tarefas.append(("GRU", dest, d_ida, d_volta, label))
-            tarefas.append(("CGH", dest, d_ida, d_volta, label))
+    # Monta lista de janelas a vigiar: Feriados prioritários + Janelas Alavancadas TRE
+    janelas_vigilancia = list(JANELAS_PRIORITARIAS)
 
+    # Adiciona janelas estratégicas de alavancagem TRE (Quinta a Domingo, Sábado a Terça, Sexta a Terça)
+    try:
+        janelas_tre = gerar_janelas_tre_ano(2027)
+        # Seleciona as mais imediatas e com alto potencial de desconto (Março, Abril, Maio)
+        for j in janelas_tre:
+            if j.inicio.month in (3, 4, 5) and (j.modalidade in ("Quinta a Domingo", "Sábado a Terça") or j.is_extensao_feriado):
+                alav_str = f"Usa {j.folgas_tre} folga(s) TRE ({', '.join(j.dias_tre)}) — {j.descricao}"
+                janelas_vigilancia.append((j.inicio_iso, j.fim_iso, j.modalidade, False, alav_str))
+    except Exception as e:
+        print(f"Aviso: Não foi possível carregar janelas TRE: {e}")
+
+    tarefas = []
+    for d_ida, d_volta, label, is_alta, alav in janelas_vigilancia:
+        for dest in DESTINOS:
+            # Varre Galeão (GIG), Guarulhos (GRU) e Congonhas (CGH)
+            tarefas.append(("GIG", dest, d_ida, d_volta, label, is_alta, alav))
+            tarefas.append(("CGH", dest, d_ida, d_volta, label, is_alta, alav))
+
+    print(f"Executando {len(tarefas)} verificações no radar...")
     encontrados = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
         futs = [executor.submit(consultar_par, *t) for t in tarefas]
         for f in concurrent.futures.as_completed(futs):
             res = f.result()
@@ -119,13 +138,12 @@ def executar_ronda():
             voo["origem"], voo["destino"], voo["data_ida"], voo["data_volta"], voo["preco"]
         )
 
-        # Só envia alerta se for uma queda de preço ou se estiver abaixo do teto
-        # Para VIX: <= 550 | CWB: <= 860 | CNF: <= 925 | BSB: <= 950
-        tetos = {"VIX": 550, "CWB": 860, "CNF": 925, "BSB": 950, "FLN": 1200, "SSA": 1500}
+        # Tetos de alerta dinâmicos
+        tetos = {"VIX": 550, "CWB": 860, "CNF": 925, "BSB": 950, "FLN": 1200, "NVT": 1000, "IGU": 1100, "SSA": 1500}
         teto = tetos.get(voo["destino"], 800)
 
         if deve_alertar and voo["preco"] <= teto:
-            contexto = vigilante.avaliar_contexto_historico(voo["destino"], voo["preco"], is_alta_temporada=True)
+            contexto = vigilante.avaliar_contexto_historico(voo["destino"], voo["preco"], is_alta_temporada=voo["is_alta"])
 
             # Prefixo se for queda de preço
             banner_queda = ""
@@ -145,7 +163,8 @@ def executar_ronda():
                 horario_volta=voo["horario_volta"],
                 onibus_detalhe=sugerir_horario_onibus(voo["horario_ida"], voo["origem"]),
                 url_reserva=voo["url"],
-                modo="html"
+                modo="html",
+                alavancagem_tre=voo["alavancagem_tre"]
             )
 
             # Anexa termômetro histórico compacto

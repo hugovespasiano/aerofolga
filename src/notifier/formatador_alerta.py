@@ -68,7 +68,8 @@ def formatar_alerta_novo_padrao(
     horario_volta: str,
     onibus_detalhe: str,
     url_reserva: str,
-    modo: str = "html"
+    modo: str = "html",
+    alavancagem_tre: Optional[str] = None
 ) -> str:
     """
     Gera a mensagem com a nova diagramação solicitada pelo Hugo:
@@ -111,6 +112,9 @@ def formatar_alerta_novo_padrao(
         bloco_economia_html = f"""🏷️ <b>MERCADO EM ALTA:</b> R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
         bloco_economia_txt = f"""🏷️ *MERCADO EM ALTA:* R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
 
+    bloco_tre_html = f"\n🎟️ <b>ALAVANCAGEM TRE:</b> {alavancagem_tre}\n" if alavancagem_tre else ""
+    bloco_tre_txt = f"\n🎟️ *ALAVANCAGEM TRE:* {alavancagem_tre}\n" if alavancagem_tre else ""
+
     if modo == "html":
         return f"""💰 <b>R$ {custo_final_casal:,.2f} TOTAL CASAL</b> (Porta a Porta)
    ↳ Passagens Casal: R$ {passagens_casal:,.2f} (R$ {tarifa_pessoa:,.2f}/pessoa ida e volta)
@@ -119,7 +123,7 @@ def formatar_alerta_novo_padrao(
 {bloco_economia_html}
 
 📍 <b>ROTA:</b> {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
-📅 <b>DATAS:</b> {datas_label}
+📅 <b>DATAS:</b> {datas_label}{bloco_tre_html}
 ⏰ <b>HORÁRIOS DOS VOOS ({cia_aerea}):</b>
    • <b>Ida:</b> {horario_ida}
    • <b>Volta:</b> {horario_volta}
@@ -138,7 +142,7 @@ def formatar_alerta_novo_padrao(
 {bloco_economia_txt}
 
 📍 *ROTA:* {origem_nome} ({origem}) ➔ {destino_nome} ({destino})
-📅 *DATAS:* {datas_label}
+📅 *DATAS:* {datas_label}{bloco_tre_txt}
 ⏰ *HORÁRIOS DOS VOOS ({cia_aerea}):*
    • *Ida:* {horario_ida}
    • *Volta:* {horario_volta}
