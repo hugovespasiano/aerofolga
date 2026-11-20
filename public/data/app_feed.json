@@ -1,0 +1,1390 @@
+{
+  "versao": "2.1.0",
+  "ano": 2027,
+  "total_janelas": 74,
+  "total_ofertas": 7,
+  "janelas": [
+    {
+      "inicio": "2027-01-01",
+      "fim": "2027-01-03",
+      "nome_evento": "Confraternização Universal (Feriadão Puro)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 3,
+      "detalhes": "Feriado oficial na sexta + fim de semana. Zero uso de folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "01/01 (Sex) a 03/01 (Dom) — Confraternização Universal (Feriadão Puro) [🟢 100% PURO, 3 dias]"
+    },
+    {
+      "inicio": "2027-01-01",
+      "fim": "2027-01-05",
+      "nome_evento": "Confraternização Universal Estendido até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (04/01)",
+        "Terça (05/01)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "Feriado na sexta + fim de semana + 2 folgas TRE na seg/ter (fuga do voo caro de domingo)",
+      "is_alta_temporada": true,
+      "label": "01/01 (Sex) a 05/01 (Ter) — Confraternização Universal Estendido até Terça [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-01-01",
+      "fim": "2027-01-05",
+      "nome_evento": "Réveillon / Férias de Janeiro",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 5,
+      "detalhes": "Recesso de início de ano letivo.",
+      "is_alta_temporada": true,
+      "label": "01/01 (Sex) a 05/01 (Ter) — Réveillon / Férias de Janeiro [🟢 100% PURO, 5 dias]"
+    },
+    {
+      "inicio": "2027-01-20",
+      "fim": "2027-01-24",
+      "nome_evento": "São Sebastião (Padroeiro de Barra Mansa) Estendido (Qua ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (21/01)",
+        "Sexta (22/01)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "Feriado na quarta + 2 folgas TRE enforcando quinta e sexta.",
+      "is_alta_temporada": false,
+      "label": "20/01 (Qua) a 24/01 (Dom) — São Sebastião (Padroeiro de Barra Mansa) Estendido (Qua ➔ Dom) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-02-04",
+      "fim": "2027-02-09",
+      "nome_evento": "Terça-feira de Carnaval Super Ponte Antecipada (Qui ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (04/02)",
+        "Sexta (05/02)"
+      ],
+      "dias_totais": 6,
+      "detalhes": "6 dias contíguos saindo na quinta com 2 folgas TRE, voltando no feriado da terça.",
+      "is_alta_temporada": true,
+      "label": "04/02 (Qui) a 09/02 (Ter) — Terça-feira de Carnaval Super Ponte Antecipada (Qui ➔ Ter) [🟡 USA 2 FOLGA(S), 6 dias]"
+    },
+    {
+      "inicio": "2027-02-06",
+      "fim": "2027-02-09",
+      "nome_evento": "Terça-feira de Carnaval (Ponte Pura Sáb ➔ Ter)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Fim de semana + ponto facultativo de segunda + feriado oficial na terça. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "06/02 (Sáb) a 09/02 (Ter) — Terça-feira de Carnaval (Ponte Pura Sáb ➔ Ter) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-03-11",
+      "fim": "2027-03-14",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (11/03)",
+        "Sexta (12/03)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "11/03 (Qui) a 14/03 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-03-12",
+      "fim": "2027-03-16",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (15/03)",
+        "Terça (16/03)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "12/03 (Sex) a 16/03 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-03-13",
+      "fim": "2027-03-16",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (15/03)",
+        "Terça (16/03)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "13/03 (Sáb) a 16/03 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-03-18",
+      "fim": "2027-03-21",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (18/03)",
+        "Sexta (19/03)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "18/03 (Qui) a 21/03 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-03-19",
+      "fim": "2027-03-21",
+      "nome_evento": "São José (Padroeiro de Itatiaia) (Feriadão Puro)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 3,
+      "detalhes": "Feriado oficial na sexta + fim de semana. Zero uso de folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "19/03 (Sex) a 21/03 (Dom) — São José (Padroeiro de Itatiaia) (Feriadão Puro) [🟢 100% PURO, 3 dias]"
+    },
+    {
+      "inicio": "2027-03-19",
+      "fim": "2027-03-23",
+      "nome_evento": "São José (Padroeiro de Itatiaia) Estendido até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (22/03)",
+        "Terça (23/03)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "Feriado na sexta + fim de semana + 2 folgas TRE na seg/ter (fuga do voo caro de domingo)",
+      "is_alta_temporada": true,
+      "label": "19/03 (Sex) a 23/03 (Ter) — São José (Padroeiro de Itatiaia) Estendido até Terça [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-03-20",
+      "fim": "2027-03-23",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (22/03)",
+        "Terça (23/03)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "20/03 (Sáb) a 23/03 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-03-26",
+      "fim": "2027-03-28",
+      "nome_evento": "Sexta-feira Santa (Paixão de Cristo) (Feriadão Puro)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 3,
+      "detalhes": "Feriado oficial na sexta + fim de semana. Zero uso de folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "26/03 (Sex) a 28/03 (Dom) — Sexta-feira Santa (Paixão de Cristo) (Feriadão Puro) [🟢 100% PURO, 3 dias]"
+    },
+    {
+      "inicio": "2027-03-26",
+      "fim": "2027-03-30",
+      "nome_evento": "Sexta-feira Santa (Paixão de Cristo) Estendido até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (29/03)",
+        "Terça (30/03)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "Feriado na sexta + fim de semana + 2 folgas TRE na seg/ter (fuga do voo caro de domingo)",
+      "is_alta_temporada": true,
+      "label": "26/03 (Sex) a 30/03 (Ter) — Sexta-feira Santa (Paixão de Cristo) Estendido até Terça [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-04-08",
+      "fim": "2027-04-11",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (08/04)",
+        "Sexta (09/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "08/04 (Qui) a 11/04 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-04-09",
+      "fim": "2027-04-13",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (12/04)",
+        "Terça (13/04)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "09/04 (Sex) a 13/04 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-04-10",
+      "fim": "2027-04-13",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (12/04)",
+        "Terça (13/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "10/04 (Sáb) a 13/04 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-04-15",
+      "fim": "2027-04-18",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (15/04)",
+        "Sexta (16/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "15/04 (Qui) a 18/04 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-04-16",
+      "fim": "2027-04-20",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (19/04)",
+        "Terça (20/04)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "16/04 (Sex) a 20/04 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-04-17",
+      "fim": "2027-04-20",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (19/04)",
+        "Terça (20/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "17/04 (Sáb) a 20/04 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-04-21",
+      "fim": "2027-04-25",
+      "nome_evento": "Mega Feriado RJ Tiradentes + São Jorge (Qua ➔ Dom)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 5,
+      "detalhes": "5 dias puros: Quarta (Tiradentes), Quinta (Ponto Facultativo RJ), Sexta (São Jorge RJ), Sáb e Dom.",
+      "is_alta_temporada": true,
+      "label": "21/04 (Qua) a 25/04 (Dom) — Mega Feriado RJ Tiradentes + São Jorge (Qua ➔ Dom) [🟢 100% PURO, 5 dias]"
+    },
+    {
+      "inicio": "2027-04-22",
+      "fim": "2027-04-25",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (22/04)",
+        "Sexta (23/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "22/04 (Qui) a 25/04 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-04-23",
+      "fim": "2027-04-25",
+      "nome_evento": "Dia de São Jorge (Feriadão Puro)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 3,
+      "detalhes": "Feriado oficial na sexta + fim de semana. Zero uso de folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "23/04 (Sex) a 25/04 (Dom) — Dia de São Jorge (Feriadão Puro) [🟢 100% PURO, 3 dias]"
+    },
+    {
+      "inicio": "2027-04-23",
+      "fim": "2027-04-27",
+      "nome_evento": "Dia de São Jorge Estendido até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (26/04)",
+        "Terça (27/04)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "Feriado na sexta + fim de semana + 2 folgas TRE na seg/ter (fuga do voo caro de domingo)",
+      "is_alta_temporada": true,
+      "label": "23/04 (Sex) a 27/04 (Ter) — Dia de São Jorge Estendido até Terça [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-04-24",
+      "fim": "2027-04-27",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (26/04)",
+        "Terça (27/04)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "24/04 (Sáb) a 27/04 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-05-13",
+      "fim": "2027-05-16",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (13/05)",
+        "Sexta (14/05)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "13/05 (Qui) a 16/05 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-05-14",
+      "fim": "2027-05-18",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (17/05)",
+        "Terça (18/05)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "14/05 (Sex) a 18/05 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-05-15",
+      "fim": "2027-05-18",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (17/05)",
+        "Terça (18/05)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "15/05 (Sáb) a 18/05 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-05-20",
+      "fim": "2027-05-23",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (20/05)",
+        "Sexta (21/05)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "20/05 (Qui) a 23/05 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-05-21",
+      "fim": "2027-05-25",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (24/05)",
+        "Terça (25/05)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "21/05 (Sex) a 25/05 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-05-22",
+      "fim": "2027-05-25",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (24/05)",
+        "Terça (25/05)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "22/05 (Sáb) a 25/05 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-05-27",
+      "fim": "2027-05-30",
+      "nome_evento": "Corpus Christi (Ponte Pura com Ponto Facultativo)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Feriado oficial na quinta + ponto facultativo tradicional do Estado/Municípios na sexta + fim de semana.",
+      "is_alta_temporada": true,
+      "label": "27/05 (Qui) a 30/05 (Dom) — Corpus Christi (Ponte Pura com Ponto Facultativo) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-05-27",
+      "fim": "2027-06-01",
+      "nome_evento": "Corpus Christi Super Ponte até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Sexta (28/05)",
+        "Segunda (31/05)"
+      ],
+      "dias_totais": 6,
+      "detalhes": "6 dias contíguos de Quinta a Terça usando folga TRE na segunda e retorno na terça econômica.",
+      "is_alta_temporada": true,
+      "label": "27/05 (Qui) a 01/06 (Ter) — Corpus Christi Super Ponte até Terça [🟡 USA 2 FOLGA(S), 6 dias]"
+    },
+    {
+      "inicio": "2027-05-29",
+      "fim": "2027-06-01",
+      "nome_evento": "Emancipação Político-Administrativa de Itatiaia (Ponte Pura Sáb ➔ Ter)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Fim de semana + ponto facultativo de segunda + feriado oficial na terça. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "29/05 (Sáb) a 01/06 (Ter) — Emancipação Político-Administrativa de Itatiaia (Ponte Pura Sáb ➔ Ter) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-06-10",
+      "fim": "2027-06-13",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (10/06)",
+        "Sexta (11/06)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "10/06 (Qui) a 13/06 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-06-11",
+      "fim": "2027-06-15",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (14/06)",
+        "Terça (15/06)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "11/06 (Sex) a 15/06 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-06-12",
+      "fim": "2027-06-15",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (14/06)",
+        "Terça (15/06)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "12/06 (Sáb) a 15/06 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-06-17",
+      "fim": "2027-06-20",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (17/06)",
+        "Sexta (18/06)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "17/06 (Qui) a 20/06 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-06-18",
+      "fim": "2027-06-22",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (21/06)",
+        "Terça (22/06)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "18/06 (Sex) a 22/06 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-06-19",
+      "fim": "2027-06-22",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (21/06)",
+        "Terça (22/06)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "19/06 (Sáb) a 22/06 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-07-17",
+      "fim": "2027-07-25",
+      "nome_evento": "Recesso Escolar de Julho (Casal)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 9,
+      "detalhes": "Recesso escolar de meio de ano do magistério (livre para Hugo e recesso/férias da esposa).",
+      "is_alta_temporada": true,
+      "label": "17/07 (Sáb) a 25/07 (Dom) — Recesso Escolar de Julho (Casal) [🟢 100% PURO, 9 dias]"
+    },
+    {
+      "inicio": "2027-08-12",
+      "fim": "2027-08-15",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (12/08)",
+        "Sexta (13/08)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "12/08 (Qui) a 15/08 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-08-13",
+      "fim": "2027-08-17",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (16/08)",
+        "Terça (17/08)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "13/08 (Sex) a 17/08 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-08-14",
+      "fim": "2027-08-17",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (16/08)",
+        "Terça (17/08)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "14/08 (Sáb) a 17/08 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-08-19",
+      "fim": "2027-08-22",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (19/08)",
+        "Sexta (20/08)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "19/08 (Qui) a 22/08 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-08-20",
+      "fim": "2027-08-24",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (23/08)",
+        "Terça (24/08)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "20/08 (Sex) a 24/08 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-08-21",
+      "fim": "2027-08-24",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (23/08)",
+        "Terça (24/08)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "21/08 (Sáb) a 24/08 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-09-02",
+      "fim": "2027-09-07",
+      "nome_evento": "Independência do Brasil Super Ponte Antecipada (Qui ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (02/09)",
+        "Sexta (03/09)"
+      ],
+      "dias_totais": 6,
+      "detalhes": "6 dias contíguos saindo na quinta com 2 folgas TRE, voltando no feriado da terça.",
+      "is_alta_temporada": true,
+      "label": "02/09 (Qui) a 07/09 (Ter) — Independência do Brasil Super Ponte Antecipada (Qui ➔ Ter) [🟡 USA 2 FOLGA(S), 6 dias]"
+    },
+    {
+      "inicio": "2027-09-04",
+      "fim": "2027-09-07",
+      "nome_evento": "Independência do Brasil (Ponte Pura Sáb ➔ Ter)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Fim de semana + ponto facultativo de segunda + feriado oficial na terça. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "04/09 (Sáb) a 07/09 (Ter) — Independência do Brasil (Ponte Pura Sáb ➔ Ter) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-09-09",
+      "fim": "2027-09-12",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (09/09)",
+        "Sexta (10/09)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "09/09 (Qui) a 12/09 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-09-10",
+      "fim": "2027-09-14",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (13/09)",
+        "Terça (14/09)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "10/09 (Sex) a 14/09 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-09-11",
+      "fim": "2027-09-14",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (13/09)",
+        "Terça (14/09)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "11/09 (Sáb) a 14/09 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-09-16",
+      "fim": "2027-09-19",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (16/09)",
+        "Sexta (17/09)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "16/09 (Qui) a 19/09 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-09-17",
+      "fim": "2027-09-21",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (20/09)",
+        "Terça (21/09)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "17/09 (Sex) a 21/09 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-09-18",
+      "fim": "2027-09-21",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (20/09)",
+        "Terça (21/09)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "18/09 (Sáb) a 21/09 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-10-07",
+      "fim": "2027-10-12",
+      "nome_evento": "Nossa Senhora Aparecida (Padroeira do Brasil) Super Ponte Antecipada (Qui ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (07/10)",
+        "Sexta (08/10)"
+      ],
+      "dias_totais": 6,
+      "detalhes": "6 dias contíguos saindo na quinta com 2 folgas TRE, voltando no feriado da terça.",
+      "is_alta_temporada": true,
+      "label": "07/10 (Qui) a 12/10 (Ter) — Nossa Senhora Aparecida (Padroeira do Brasil) Super Ponte Antecipada (Qui ➔ Ter) [🟡 USA 2 FOLGA(S), 6 dias]"
+    },
+    {
+      "inicio": "2027-10-09",
+      "fim": "2027-10-12",
+      "nome_evento": "Nossa Senhora Aparecida (Padroeira do Brasil) (Ponte Pura Sáb ➔ Ter)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Fim de semana + ponto facultativo de segunda + feriado oficial na terça. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "09/10 (Sáb) a 12/10 (Ter) — Nossa Senhora Aparecida (Padroeira do Brasil) (Ponte Pura Sáb ➔ Ter) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-10-14",
+      "fim": "2027-10-17",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (14/10)",
+        "Sexta (15/10)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "14/10 (Qui) a 17/10 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-10-15",
+      "fim": "2027-10-19",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (18/10)",
+        "Terça (19/10)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "15/10 (Sex) a 19/10 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-10-16",
+      "fim": "2027-10-19",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (18/10)",
+        "Terça (19/10)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "16/10 (Sáb) a 19/10 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-10-21",
+      "fim": "2027-10-24",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (21/10)",
+        "Sexta (22/10)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "21/10 (Qui) a 24/10 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-10-22",
+      "fim": "2027-10-26",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (25/10)",
+        "Terça (26/10)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "22/10 (Sex) a 26/10 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-10-23",
+      "fim": "2027-10-26",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (25/10)",
+        "Terça (26/10)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "23/10 (Sáb) a 26/10 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-10-28",
+      "fim": "2027-11-02",
+      "nome_evento": "Finados Super Ponte Antecipada (Qui ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (28/10)",
+        "Sexta (29/10)"
+      ],
+      "dias_totais": 6,
+      "detalhes": "6 dias contíguos saindo na quinta com 2 folgas TRE, voltando no feriado da terça.",
+      "is_alta_temporada": true,
+      "label": "28/10 (Qui) a 02/11 (Ter) — Finados Super Ponte Antecipada (Qui ➔ Ter) [🟡 USA 2 FOLGA(S), 6 dias]"
+    },
+    {
+      "inicio": "2027-10-30",
+      "fim": "2027-11-02",
+      "nome_evento": "Finados (Ponte Pura Sáb ➔ Ter)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 4,
+      "detalhes": "Fim de semana + ponto facultativo de segunda + feriado oficial na terça. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "30/10 (Sáb) a 02/11 (Ter) — Finados (Ponte Pura Sáb ➔ Ter) [🟢 100% PURO, 4 dias]"
+    },
+    {
+      "inicio": "2027-11-11",
+      "fim": "2027-11-14",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (11/11)",
+        "Sexta (12/11)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "11/11 (Qui) a 14/11 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-11-12",
+      "fim": "2027-11-16",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (15/11)",
+        "Terça (16/11)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "12/11 (Sex) a 16/11 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-11-13",
+      "fim": "2027-11-15",
+      "nome_evento": "Proclamação da República (Feriadão Puro Sáb ➔ Seg)",
+      "categoria": "100% PURO (0 Folgas)",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "dias_totais": 3,
+      "detalhes": "Sábado a Segunda com feriado nacional. Zero folgas TRE.",
+      "is_alta_temporada": true,
+      "label": "13/11 (Sáb) a 15/11 (Seg) — Proclamação da República (Feriadão Puro Sáb ➔ Seg) [🟢 100% PURO, 3 dias]"
+    },
+    {
+      "inicio": "2027-11-13",
+      "fim": "2027-11-16",
+      "nome_evento": "Proclamação da República Estendido até Terça",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 1,
+      "dias_folga": [
+        "Terça (16/11)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira com 1 folga TRE para pegar passagens 40% a 50% mais baratas que a segunda.",
+      "is_alta_temporada": true,
+      "label": "13/11 (Sáb) a 16/11 (Ter) — Proclamação da República Estendido até Terça [🟡 USA 1 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-11-13",
+      "fim": "2027-11-16",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (15/11)",
+        "Terça (16/11)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "13/11 (Sáb) a 16/11 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-11-18",
+      "fim": "2027-11-21",
+      "nome_evento": "Fim de Semana Alavancado (Qui ➔ Dom)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (18/11)",
+        "Sexta (19/11)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Saída na quinta-feira aproveitando passagens de contrafluxo.",
+      "is_alta_temporada": false,
+      "label": "18/11 (Qui) a 21/11 (Dom) — Fim de Semana Alavancado (Qui ➔ Dom) [🟡 USA 2 FOLGA(S), 4 dias]"
+    },
+    {
+      "inicio": "2027-11-19",
+      "fim": "2027-11-23",
+      "nome_evento": "Ponte Estendida (Sex ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (22/11)",
+        "Terça (23/11)"
+      ],
+      "dias_totais": 5,
+      "detalhes": "5 dias contíguos de descanso com retorno na terça econômica.",
+      "is_alta_temporada": false,
+      "label": "19/11 (Sex) a 23/11 (Ter) — Ponte Estendida (Sex ➔ Ter) [🟡 USA 2 FOLGA(S), 5 dias]"
+    },
+    {
+      "inicio": "2027-11-20",
+      "fim": "2027-11-23",
+      "nome_evento": "Fim de Semana Alavancado (Sáb ➔ Ter)",
+      "categoria": "ALAVANCADO COM FOLGA",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (22/11)",
+        "Terça (23/11)"
+      ],
+      "dias_totais": 4,
+      "detalhes": "Volta na terça-feira (dia mais barato da aviação comercial).",
+      "is_alta_temporada": false,
+      "label": "20/11 (Sáb) a 23/11 (Ter) — Fim de Semana Alavancado (Sáb ➔ Ter) [🟡 USA 2 FOLGA(S), 4 dias]"
+    }
+  ],
+  "ofertas": [
+    {
+      "id": "vix_gig_mar27_tre",
+      "origem": "GIG",
+      "origem_nome": "Rio de Janeiro (Galeão)",
+      "destino": "VIX",
+      "destino_nome": "Vitória (ES)",
+      "data_ida": "2027-03-11",
+      "data_volta": "2027-03-14",
+      "label_periodo": "11/03 (Qui) a 14/03 (Dom) — 4 dias",
+      "tipo_folga": "ALAVANCADO",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (11/03)",
+        "Sexta (12/03)"
+      ],
+      "descricao_folga": "Usa 2 folgas (Quinta e Sexta) aproveitando saídas antecipadas",
+      "tarifa_pessoa": 462.0,
+      "passagens_casal": 924.0,
+      "logistica_vr": 350.0,
+      "custo_casal_total": 1274.0,
+      "cia": "LATAM",
+      "horario_ida": "08:15 ➔ 09:20",
+      "horario_volta": "17:40 ➔ 18:50",
+      "onibus_embarque": "Cidade do Aço (Rodoviária VR) às 03:00 da manhã. Chegada ao Galeão com 3h20 de antecedência líquida.",
+      "desconto_pct": 48,
+      "economia_casal": 836.0,
+      "preco_tipico": 880.0,
+      "piso_historico": 240.0,
+      "teto_historico": 1650.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20VIX%20from%20GIG%20on%202027-03-11%20through%202027-03-14"
+    },
+    {
+      "id": "fln_gig_mar27_tre",
+      "origem": "GIG",
+      "origem_nome": "Rio de Janeiro (Galeão)",
+      "destino": "FLN",
+      "destino_nome": "Florianópolis (SC)",
+      "data_ida": "2027-03-20",
+      "data_volta": "2027-03-23",
+      "label_periodo": "20/03 (Sáb) a 23/03 (Ter) — 4 dias",
+      "tipo_folga": "ALAVANCADO",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (22/03)",
+        "Terça (23/03)"
+      ],
+      "descricao_folga": "Usa 2 folgas na volta (Terça é o dia mais barato da semana)",
+      "tarifa_pessoa": 520.0,
+      "passagens_casal": 1040.0,
+      "logistica_vr": 350.0,
+      "custo_casal_total": 1390.0,
+      "cia": "Gol / LATAM",
+      "horario_ida": "09:30 ➔ 11:05",
+      "horario_volta": "18:15 ➔ 19:45",
+      "onibus_embarque": "Cidade do Aço às 04:00 da manhã no sábado (sem estresse). Chegada ao GIG com 3h30 de antecedência.",
+      "desconto_pct": 64,
+      "economia_casal": 1860.0,
+      "preco_tipico": 1450.0,
+      "piso_historico": 420.0,
+      "teto_historico": 2600.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20FLN%20from%20GIG%20on%202027-03-20%20through%202027-03-23"
+    },
+    {
+      "id": "vix_gig_semana_santa_puro",
+      "origem": "GIG",
+      "origem_nome": "Rio de Janeiro (Galeão)",
+      "destino": "VIX",
+      "destino_nome": "Vitória (ES)",
+      "data_ida": "2027-03-26",
+      "data_volta": "2027-03-28",
+      "label_periodo": "26/03 (Sex) a 28/03 (Dom) — Sexta Santa (3 dias)",
+      "tipo_folga": "PURO",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "descricao_folga": "Feriado Nacional 100% Puro (Zero folgas gastas)",
+      "tarifa_pessoa": 508.0,
+      "passagens_casal": 1016.0,
+      "logistica_vr": 350.0,
+      "custo_casal_total": 1366.0,
+      "cia": "LATAM",
+      "horario_ida": "07:45 ➔ 08:50",
+      "horario_volta": "19:10 ➔ 20:15",
+      "onibus_embarque": "Cidade do Aço às 02:30 da manhã na sexta-feira santa.",
+      "desconto_pct": 42,
+      "economia_casal": 744.0,
+      "preco_tipico": 880.0,
+      "piso_historico": 500.0,
+      "teto_historico": 1650.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20VIX%20from%20GIG%20on%202027-03-26%20through%202027-03-28"
+    },
+    {
+      "id": "cwb_gig_corpus_puro",
+      "origem": "GIG",
+      "origem_nome": "Rio de Janeiro (Galeão)",
+      "destino": "CWB",
+      "destino_nome": "Curitiba (PR)",
+      "data_ida": "2027-05-27",
+      "data_volta": "2027-05-30",
+      "label_periodo": "27/05 (Qui) a 30/05 (Dom) — Corpus Christi (4 dias)",
+      "tipo_folga": "PURO",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "descricao_folga": "Quinta feriado + Sexta ponto facultativo estadual/municipal (Zero folgas gastas)",
+      "tarifa_pessoa": 528.0,
+      "passagens_casal": 1056.0,
+      "logistica_vr": 350.0,
+      "custo_casal_total": 1406.0,
+      "cia": "LATAM",
+      "horario_ida": "08:30 ➔ 09:55",
+      "horario_volta": "18:20 ➔ 19:40",
+      "onibus_embarque": "Cidade do Aço às 03:15 da manhã. Chegada no GIG ~3h15 antes do voo.",
+      "desconto_pct": 50,
+      "economia_casal": 1044.0,
+      "preco_tipico": 1050.0,
+      "piso_historico": 750.0,
+      "teto_historico": 1900.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20CWB%20from%20GIG%20on%202027-05-27%20through%202027-05-30"
+    },
+    {
+      "id": "cwb_gig_tiradentes_puro",
+      "origem": "GIG",
+      "origem_nome": "Rio de Janeiro (Galeão)",
+      "destino": "CWB",
+      "destino_nome": "Curitiba (PR)",
+      "data_ida": "2027-04-21",
+      "data_volta": "2027-04-25",
+      "label_periodo": "21/04 (Qua) a 25/04 (Dom) — Tiradentes + São Jorge (5 dias)",
+      "tipo_folga": "PURO",
+      "folgas_gastas": 0,
+      "dias_folga": [],
+      "descricao_folga": "Mega Feriadão Estadual RJ (Qua Tiradentes, Qui Ponto Fac, Sex São Jorge) — 5 dias puros!",
+      "tarifa_pessoa": 553.0,
+      "passagens_casal": 1106.0,
+      "logistica_vr": 350.0,
+      "custo_casal_total": 1456.0,
+      "cia": "Gol",
+      "horario_ida": "09:00 ➔ 10:25",
+      "horario_volta": "17:30 ➔ 18:55",
+      "onibus_embarque": "Cidade do Aço às 03:45 da manhã.",
+      "desconto_pct": 47,
+      "economia_casal": 994.0,
+      "preco_tipico": 1050.0,
+      "piso_historico": 750.0,
+      "teto_historico": 1900.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20CWB%20from%20GIG%20on%202027-04-21%20through%202027-04-25"
+    },
+    {
+      "id": "cwb_cgh_mar27_tre",
+      "origem": "CGH",
+      "origem_nome": "São Paulo (Congonhas)",
+      "destino": "CWB",
+      "destino_nome": "Curitiba (PR)",
+      "data_ida": "2027-03-11",
+      "data_volta": "2027-03-14",
+      "label_periodo": "11/03 (Qui) a 14/03 (Dom) — 4 dias",
+      "tipo_folga": "ALAVANCADO",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Quinta (11/03)",
+        "Sexta (12/03)"
+      ],
+      "descricao_folga": "Usa 2 folgas na quinta e sexta via Congonhas",
+      "tarifa_pessoa": 435.0,
+      "passagens_casal": 870.0,
+      "logistica_vr": 730.0,
+      "custo_casal_total": 1600.0,
+      "cia": "Gol",
+      "horario_ida": "10:15 ➔ 11:15",
+      "horario_volta": "19:00 ➔ 20:00",
+      "onibus_embarque": "Viação Cometa (VR ➔ Terminal Tietê) + Uber Tietê ➔ Congonhas.",
+      "desconto_pct": 59,
+      "economia_casal": 1230.0,
+      "preco_tipico": 1050.0,
+      "piso_historico": 320.0,
+      "teto_historico": 1900.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20CWB%20from%20CGH%20on%202027-03-11%20through%202027-03-14"
+    },
+    {
+      "id": "nvt_cgh_mar27_tre",
+      "origem": "CGH",
+      "origem_nome": "São Paulo (Congonhas)",
+      "destino": "NVT",
+      "destino_nome": "Navegantes / Beto Carrero (SC)",
+      "data_ida": "2027-03-13",
+      "data_volta": "2027-03-16",
+      "label_periodo": "13/03 (Sáb) a 16/03 (Ter) — 4 dias",
+      "tipo_folga": "ALAVANCADO",
+      "folgas_gastas": 2,
+      "dias_folga": [
+        "Segunda (15/03)",
+        "Terça (16/03)"
+      ],
+      "descricao_folga": "Usa 2 folgas com volta na terça econômica",
+      "tarifa_pessoa": 461.0,
+      "passagens_casal": 922.0,
+      "logistica_vr": 730.0,
+      "custo_casal_total": 1652.0,
+      "cia": "Gol",
+      "horario_ida": "09:40 ➔ 10:45",
+      "horario_volta": "16:20 ➔ 17:25",
+      "onibus_embarque": "Viação Cometa (VR ➔ Terminal Tietê) + Uber Tietê ➔ Congonhas.",
+      "desconto_pct": 67,
+      "economia_casal": 1838.0,
+      "preco_tipico": 1380.0,
+      "piso_historico": 380.0,
+      "teto_historico": 2400.0,
+      "url": "https://www.google.com/travel/flights?q=Flights%20to%20NVT%20from%20CGH%20on%202027-03-13%20through%202027-03-16"
+    }
+  ],
+  "referencia": {
+    "VIX": {
+      "nome": "Vitória (ES)",
+      "piso_baixa_temporada": 240,
+      "piso_alta_temporada": 500,
+      "preco_medio_tipico": 880,
+      "teto_maximo_alta": 1650,
+      "meses_mais_baratos": "Maio, Agosto, Setembro",
+      "comentario": "Rota curta com voos diretos Gol e LATAM. Abaixo de R$ 550 em feriado é compra imediata."
+    },
+    "CWB": {
+      "nome": "Curitiba (PR)",
+      "piso_baixa_temporada": 320,
+      "piso_alta_temporada": 750,
+      "preco_medio_tipico": 1050,
+      "teto_maximo_alta": 1900,
+      "meses_mais_baratos": "Abril, Maio, Outubro",
+      "comentario": "Muita concorrência Gol/LATAM/Azul. Abaixo de R$ 800 em feriadão é raridade."
+    },
+    "CNF": {
+      "nome": "Belo Horizonte (MG)",
+      "piso_baixa_temporada": 260,
+      "piso_alta_temporada": 650,
+      "preco_medio_tipico": 920,
+      "teto_maximo_alta": 1700,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Frequência diária intensa. Menos de R$ 680 em feriadão é excelente negócio."
+    },
+    "BSB": {
+      "nome": "Brasília (DF)",
+      "piso_baixa_temporada": 290,
+      "piso_alta_temporada": 720,
+      "preco_medio_tipico": 1150,
+      "teto_maximo_alta": 2100,
+      "meses_mais_baratos": "Fim de Janeiro, Junho, Novembro",
+      "comentario": "Esvazia nos recessos e feriadões, abrindo promoções raras abaixo de R$ 750."
+    },
+    "FLN": {
+      "nome": "Florianópolis (SC)",
+      "piso_baixa_temporada": 420,
+      "piso_alta_temporada": 950,
+      "preco_medio_tipico": 1450,
+      "teto_maximo_alta": 2600,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Altíssima demanda de turismo. Qualquer tarifa abaixo de R$ 1.000 em feriado é imperdível."
+    },
+    "NVT": {
+      "nome": "Navegantes / Beto Carrero (SC)",
+      "piso_baixa_temporada": 380,
+      "piso_alta_temporada": 850,
+      "preco_medio_tipico": 1380,
+      "teto_maximo_alta": 2400,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Destino concorrido de praia e parque. Abaixo de R$ 850 é compra sem pensar."
+    },
+    "SSA": {
+      "nome": "Salvador (BA)",
+      "piso_baixa_temporada": 550,
+      "piso_alta_temporada": 1350,
+      "preco_medio_tipico": 1900,
+      "teto_maximo_alta": 3200,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Verão baiano é o mais caro do país. Abaixo de R$ 1.400 em feriado é muito difícil."
+    },
+    "IGU": {
+      "nome": "Foz do Iguaçu (PR)",
+      "piso_baixa_temporada": 480,
+      "piso_alta_temporada": 1100,
+      "preco_medio_tipico": 1650,
+      "teto_maximo_alta": 2800,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Destino internacional das Cataratas. Menos de R$ 1.100 é uma pechincha."
+    },
+    "REC": {
+      "nome": "Recife (PE)",
+      "piso_baixa_temporada": 590,
+      "piso_alta_temporada": 1500,
+      "preco_medio_tipico": 2100,
+      "teto_maximo_alta": 3500,
+      "meses_mais_baratos": "Maio, Junho, Agosto",
+      "comentario": "Porta de entrada do Nordeste. Abaixo de R$ 1.500 em feriadão é raro."
+    }
+  },
+  "cidades_atendidas": [
+    {
+      "id": "volta_redonda",
+      "nome": "Volta Redonda (RJ)",
+      "onibus_principal": "Cidade do Aço (GIG) / Cometa (SP)"
+    },
+    {
+      "id": "barra_mansa",
+      "nome": "Barra Mansa (RJ)",
+      "onibus_principal": "Cidade do Aço / Cometa"
+    },
+    {
+      "id": "resende",
+      "nome": "Resende (RJ)",
+      "onibus_principal": "Cidade do Aço / Cometa"
+    },
+    {
+      "id": "itatiaia",
+      "nome": "Itatiaia (RJ)",
+      "onibus_principal": "Cidade do Aço / Cometa"
+    }
+  ]
+}

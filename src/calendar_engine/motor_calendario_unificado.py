@@ -16,6 +16,7 @@ from calendar_engine.feriados_fixos import obter_feriados_ano, Feriado
 class JanelaUnificada:
     CATEGORIA_PURO = "100% PURO (0 Folgas)"
     CATEGORIA_ALAVANCADO = "ALAVANCADO COM FOLGA"
+    CATEGORIA_ALAVANCADO_TRE = "ALAVANCADO COM FOLGA"
 
     def __init__(
         self,
@@ -23,18 +24,33 @@ class JanelaUnificada:
         fim: date,
         nome_evento: str,
         categoria: str,
-        folgas_gastas: int,
-        dias_folga: List[str],
-        detalhes: str,
-        is_alta_temporada: bool = False
+        folgas_gastas: Optional[int] = None,
+        dias_folga: Optional[List[str]] = None,
+        detalhes: str = "",
+        is_alta_temporada: bool = False,
+        folgas_tre_gastas: Optional[int] = None,
+        dias_tre: Optional[List[str]] = None
     ):
         self.inicio = inicio
         self.fim = fim
         self.dias_totais = (fim - inicio).days + 1
         self.nome_evento = nome_evento
         self.categoria = categoria
-        self.folgas_gastas = folgas_gastas
-        self.dias_folga = dias_folga
+        # Suporta tanto folgas_gastas quanto folgas_tre_gastas
+        if folgas_gastas is not None:
+            self.folgas_gastas = folgas_gastas
+        elif folgas_tre_gastas is not None:
+            self.folgas_gastas = folgas_tre_gastas
+        else:
+            self.folgas_gastas = 0
+
+        if dias_folga is not None:
+            self.dias_folga = dias_folga
+        elif dias_tre is not None:
+            self.dias_folga = dias_tre
+        else:
+            self.dias_folga = []
+
         self.detalhes = detalhes
         self.is_alta_temporada = is_alta_temporada
 

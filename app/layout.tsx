@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
@@ -10,15 +9,15 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "AeroFolga — Radar Inteligente de Voos & Folgas de Servidores",
-  description: "Cruzamento inteligente de calendários de servidores públicos (folgas, feriados municipais, recessos e TRE) com passagens aéreas promocionais atípicas.",
+  title: "AeroFolga — Planejador de Viagens & Folgas do Casal",
+  description: "Cruzamento inteligente de calendários do casal (folgas, feriados municipais, recessos e pontes) com passagens aéreas promocionais e logística porta a porta.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "AeroFolga",
+  },
 };
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,
@@ -26,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-[#090b0e] text-[#f0f3f6]">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
