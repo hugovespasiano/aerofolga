@@ -1,96 +1,125 @@
 """
 consolidator.py — AeroFolga / Vespasiano Labs
-Consolidador Multi-Provedores: Google Flights + Skiplagged (Hidden-City).
-Compara múltiplos motores em tempo real e escolhe a menor tarifa absoluta real em BRL.
+Motor de Consolidação Multi-Buscador e Arbitragem Inteligente:
+Conecta Google Flights + Kiwi.com + Skiplagged + Amadeus GDS
+e utiliza o Agente Árbitro para deduplicar e eleger a menor tarifa absoluta.
 """
 
-from typing import Dict, Any, Optional
+from typing import List, Optional
+from flight_engine.arbitro import AgenteArbitroVoos, OfertaNormalizada
 from flight_engine.radar_voos import consultar_voo_com_blindagem
 from flight_engine.providers.skiplagged import buscar_skiplagged
-from flight_engine.filtros_tilli import PropostaVoo
+from flight_engine.providers.kiwi_provider import buscar_kiwi
+from flight_engine.providers.amadeus_provider import AmadeusClient
 
 
-def buscar_menor_tarifa_multiprovedor(
+def consolidar_todos_os_motores(
     origem: str,
     destino: str,
     data_ida: str,
-    data_volta: str,
-    preco_historico: float = 1200.0
-) -> Optional[PropostaVoo]:
+    data_volta: str
+) -> Optional[OfertaNormalizada]:
     """
-    Consulta o Google Flights e o Skiplagged simultaneamente, selecionando a menor tarifa real em BRL.
+    Dispara a busca simultânea em todos os motores conectados,
+    deduplica os resultados e arbitra o melhor preço.
     """
-    candidatos = []
+    todas_ofertas: List[OfertaNormalizada] = []
 
-    # 1. Provedor Google Flights (com blindagem profunda de payload)
-    gf_res = consultar_voo_com_blindagem(origem, destino, data_ida, data_volta)
-    if gf_res and gf_res.get("preco"):
-        candidatos.append({
-            "provedor": "Google Flights",
-            "preco": float(gf_res["preco"]),
-            "cia": gf_res.get("companhia", "Cia Aérea"),
-            "url": gf_res["url"],
-            "hidden_city": False,
-            "horario_ida": gf_res.get("horario_ida", ""),
-            "horario_volta": gf_res.get("horario_volta", ""),
-            "num_escalas": 0,
-            "duracao_conexao_horas": 0.0,
-            "duracao_total_viagem_horas": 2.0
-        })
-
-    # 2. Provedor Skiplagged (Tarifas Ocultas / Carry-on Friendly - Auditado com cotação ao vivo)
+    # 1. MOTOR 1: Google Flights (Pure Airline Inventory com blindagem profunda)
     try:
-        skip_res = buscar_skiplagged(origem, destino, data_ida, data_volta)
-        if skip_res:
-            melhor_skip = skip_res[0]
-            preco_skip_brl = float(melhor_skip["preco_pessoa"])
+        gf = consultar_voo_com_blindagem(origem, destino, data_ida, data_volta)
+        if gf and gf.get("preco"):
+            todas_ofertas.append(OfertaNormalizada(
+                motor="Google Flights",
+                origem=origem,
+                destino=destino,
+                data_ida=data_ida,
+                data_volta=data_volta,
+                preco_brl=float(gf["preco"]),
+                cia_aerea=gf.get("companhia", "Cia Aérea"),
+                horario_ida=gf.get("horario_ida", ""),
+                horario_volta=gf.get("horario_volta", ""),
+                num_escalas=0,
+                duracao_conexao_horas=0.0,
+                duracao_total_horas=2.0,
+                url_reserva=gf["url"],
+                tipo_tarifa="REGULAR"
+            ))
+    except Exception:
+        pass
 
-            candidatos.append({
-                "provedor": "Skiplagged",
-                "preco": preco_skip_brl,
-                "cia": melhor_skip.get("companhia", "Skiplagged Deal"),
-                "url": melhor_skip["url"],
-                "hidden_city": melhor_skip.get("hidden_city", False),
-                "horario_ida": melhor_skip.get("horario_ida", ""),
-                "horario_volta": melhor_skip.get("horario_volta", ""),
-                "num_escalas": melhor_skip.get("num_escalas", 0),
-                "duracao_conexao_horas": melhor_skip.get("duracao_conexao_horas", 0.0),
-                "duracao_total_viagem_horas": melhor_skip.get("duracao_total_horas", 2.5)
-            })
-    except Exception as e:
-        print(f"Erro ao consultar Skiplagged: {e}")
+    # 2. MOTOR 2: Kiwi.com (Virtual Interlining - Combos Multicompanhia)
+    try:
+        kw_list = buscar_kiwi(origem, destino, data_ida, data_volta)
+        for kw in kw_list:
+            todas_ofertas.append(OfertaNormalizada(
+                motor="Kiwi (Virtual Interlining)",
+                origem=origem,
+                destino=destino,
+                data_ida=data_ida,
+                data_volta=data_volta,
+                preco_brl=kw["preco_brl"],
+                cia_aerea=kw["cia_aerea"],
+                horario_ida="",
+                horario_volta="",
+                num_escalas=kw.get("num_escalas", 0),
+                duracao_conexao_horas=0.0,
+                duracao_total_horas=3.0,
+                url_reserva=kw["url_reserva"],
+                tipo_tarifa="COMBO_MULTICIA" if kw.get("is_combo") else "REGULAR"
+            ))
+    except Exception:
+        pass
 
-    if not candidatos:
-        return None
+    # 3. MOTOR 3: Skiplagged (Tarifas de Cidade Oculta)
+    try:
+        skip_list = buscar_skiplagged(origem, destino, data_ida, data_volta)
+        for sk in skip_list:
+            todas_ofertas.append(OfertaNormalizada(
+                motor="Skiplagged",
+                origem=origem,
+                destino=destino,
+                data_ida=data_ida,
+                data_volta=data_volta,
+                preco_brl=float(sk["preco_pessoa"]),
+                cia_aerea=f"{sk.get('companhia', 'Cia')} (🎒 Cidade Oculta - Apenas Mala de Mão)",
+                horario_ida=sk.get("horario_ida", ""),
+                horario_volta=sk.get("horario_volta", ""),
+                num_escalas=sk.get("num_escalas", 0),
+                duracao_conexao_horas=sk.get("duracao_conexao_horas", 0.0),
+                duracao_total_horas=sk.get("duracao_total_horas", 3.0),
+                url_reserva=sk["url"],
+                tipo_tarifa="SKIPLAGGED",
+                bagagem_mao_inclusa=True
+            ))
+    except Exception:
+        pass
 
-    # Vence a menor tarifa real absoluta em BRL
-    campeao = min(candidatos, key=lambda x: x["preco"])
+    # 4. MOTOR 4: Amadeus GDS
+    try:
+        amadeus = AmadeusClient()
+        amd_list = amadeus.buscar_voos(origem, destino, data_ida, data_volta)
+        for am in amd_list:
+            todas_ofertas.append(OfertaNormalizada(
+                motor="Amadeus GDS",
+                origem=origem,
+                destino=destino,
+                data_ida=data_ida,
+                data_volta=data_volta,
+                preco_brl=am["preco_brl"],
+                cia_aerea=am["cia_aerea"],
+                horario_ida="",
+                horario_volta="",
+                num_escalas=0,
+                duracao_conexao_horas=0.0,
+                duracao_total_horas=2.0,
+                url_reserva=am["url_reserva"],
+                tipo_tarifa="REGULAR"
+            ))
+    except Exception:
+        pass
 
-    cia_rotulo = campeao["cia"]
-    if campeao["hidden_city"]:
-        cia_rotulo += " (🎒 Tarifa Oculta Skiplagged - Apenas Mochila/Mala de Mão)"
-
-    return PropostaVoo(
-        origem=origem,
-        destino=destino,
-        data_ida=data_ida,
-        data_volta=data_volta,
-        companhia=f"{cia_rotulo} via {campeao['provedor']}",
-        preco_brl=campeao["preco"],
-        preco_historico_brl=preco_historico,
-        num_escalas=campeao["num_escalas"],
-        duracao_conexao_horas=campeao["duracao_conexao_horas"],
-        duracao_total_viagem_horas=campeao["duracao_total_viagem_horas"],
-        troca_aeroporto=False,
-        mala_de_mao_inclusa=True,
-        chega_no_dia_seguinte=False,
-        url_reserva=campeao["url"],
-        horario_ida=campeao.get("horario_ida", ""),
-        horario_volta=campeao.get("horario_volta", "")
-    )
-
-
-if __name__ == "__main__":
-    p = buscar_menor_tarifa_multiprovedor("GIG", "CWB", "2026-12-30", "2027-01-03", 1200.0)
-    if p:
-        print(f"Campeão CWB: {p.preco_brl} via {p.companhia}")
+    # Arbitragem e Deduplicação Inteligente
+    arbitro = AgenteArbitroVoos()
+    campeao = arbitro.arbitrar_e_desduplicar(todas_ofertas)
+    return campeao
