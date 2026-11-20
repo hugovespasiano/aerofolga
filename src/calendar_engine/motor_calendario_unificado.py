@@ -14,8 +14,8 @@ from calendar_engine.feriados_fixos import obter_feriados_ano, Feriado
 
 
 class JanelaUnificada:
-    CATEGORIA_PURO = "PURO (0 Folgas TRE)"
-    CATEGORIA_ALAVANCADO_TRE = "ALAVANCADO TRE (1 a 2 Folgas)"
+    CATEGORIA_PURO = "100% PURO (0 Folgas)"
+    CATEGORIA_ALAVANCADO = "ALAVANCADO COM FOLGA"
 
     def __init__(
         self,
@@ -23,8 +23,8 @@ class JanelaUnificada:
         fim: date,
         nome_evento: str,
         categoria: str,
-        folgas_tre_gastas: int,
-        dias_tre: List[str],
+        folgas_gastas: int,
+        dias_folga: List[str],
         detalhes: str,
         is_alta_temporada: bool = False
     ):
@@ -33,10 +33,19 @@ class JanelaUnificada:
         self.dias_totais = (fim - inicio).days + 1
         self.nome_evento = nome_evento
         self.categoria = categoria
-        self.folgas_tre_gastas = folgas_tre_gastas
-        self.dias_tre = dias_tre
+        self.folgas_gastas = folgas_gastas
+        self.dias_folga = dias_folga
         self.detalhes = detalhes
         self.is_alta_temporada = is_alta_temporada
+
+    # Mantém compatibilidade com código existente
+    @property
+    def folgas_tre_gastas(self) -> int:
+        return self.folgas_gastas
+
+    @property
+    def dias_tre(self) -> List[str]:
+        return self.dias_folga
 
     @property
     def inicio_iso(self) -> str:
@@ -50,7 +59,7 @@ class JanelaUnificada:
         dias_semana_pt = {0: "Seg", 1: "Ter", 2: "Qua", 3: "Qui", 4: "Sex", 5: "Sáb", 6: "Dom"}
         ini_str = f"{self.inicio.strftime('%d/%m')} ({dias_semana_pt[self.inicio.weekday()]})"
         fim_str = f"{self.fim.strftime('%d/%m')} ({dias_semana_pt[self.fim.weekday()]})"
-        tag = "🟢 100% PURO" if self.folgas_tre_gastas == 0 else f"🟡 TRE ({self.folgas_tre_gastas}d)"
+        tag = "🟢 100% PURO" if self.folgas_gastas == 0 else f"🟡 USA {self.folgas_gastas} FOLGA(S)"
         return f"{ini_str} a {fim_str} — {self.nome_evento} [{tag}, {self.dias_totais} dias]"
 
     def to_dict(self) -> dict:
@@ -60,15 +69,15 @@ class JanelaUnificada:
             "dias_totais": self.dias_totais,
             "nome_evento": self.nome_evento,
             "categoria": self.categoria,
-            "folgas_tre_gastas": self.folgas_tre_gastas,
-            "dias_tre": self.dias_tre,
+            "folgas_gastas": self.folgas_gastas,
+            "dias_folga": self.dias_folga,
             "detalhes": self.detalhes,
             "is_alta_temporada": self.is_alta_temporada,
             "label": self.label_amigavel()
         }
 
     def __repr__(self):
-        return f"<JanelaUnificada {self.inicio_iso} a {self.fim_iso} ({self.nome_evento}) - TRE: {self.folgas_tre_gastas}>"
+        return f"<JanelaUnificada {self.inicio_iso} a {self.fim_iso} ({self.nome_evento}) - Folgas: {self.folgas_gastas}>"
 
 
 def obter_janelas_unificadas_ano(ano: int = 2027) -> List[JanelaUnificada]:

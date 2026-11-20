@@ -113,11 +113,11 @@ def formatar_alerta_novo_padrao(
         bloco_economia_txt = f"""🏷️ *MERCADO EM ALTA:* R$ {tarifa_pessoa:,.2f} vs Médio de R$ {preco_medio:,.2f}"""
 
     if alavancagem_tre:
-        bloco_tipo_html = f"🟡 <b>TIPO DE FOLGA:</b> Alavancado TRE ({alavancagem_tre})"
-        bloco_tipo_txt = f"🟡 *TIPO DE FOLGA:* Alavancado TRE ({alavancagem_tre})"
+        bloco_tipo_html = f"🟡 <b>FOLGAS USADAS:</b> {alavancagem_tre}"
+        bloco_tipo_txt = f"🟡 *FOLGAS USADAS:* {alavancagem_tre}"
     else:
-        bloco_tipo_html = "🟢 <b>TIPO DE FOLGA:</b> Feriado / Ponto Facultativo (100% Puro — 0 folgas TRE)"
-        bloco_tipo_txt = "🟢 *TIPO DE FOLGA:* Feriado / Ponto Facultativo (100% Puro — 0 folgas TRE)"
+        bloco_tipo_html = "🟢 <b>FOLGAS USADAS:</b> Zero (100% Livre por Feriado / Ponto Facultativo)"
+        bloco_tipo_txt = "🟢 *FOLGAS USADAS:* Zero (100% Livre por Feriado / Ponto Facultativo)"
 
     if modo == "html":
         return f"""💰 <b>R$ {custo_final_casal:,.2f} TOTAL CASAL</b> (Porta a Porta)
