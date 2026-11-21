@@ -93,23 +93,32 @@ sqlFiles.forEach((file) => {
 });
 
 // -----------------------------------------------------------------------------
-// CHECK 02: public.profiles + Trigger on_auth_user_created
+// CHECK 02: public.profiles + Trigger Idempotente (Anti-Race Condition)
 // -----------------------------------------------------------------------------
 if (!allSql) {
-  recordCheck("02", "Substrato Universal de Identidade (public.profiles)", false, "Nenhuma migration encontrada em supabase/migrations.");
+  recordCheck("02", "Substrato Universal de Identidade (public.profiles + Idempotência)", false, "Nenhuma migration encontrada em supabase/migrations.");
 } else {
   const hasProfilesTable = /CREATE\s+TABLE[^(]+public\.profiles/i.test(allSql) || /CREATE\s+TABLE[^(]+profiles/i.test(allSql);
   const hasProfilesRls = /ALTER\s+TABLE[^(]+profiles\s+ENABLE\s+ROW\s+LEVEL\s+SECURITY/i.test(allSql);
   const hasUserTrigger = /CREATE\s+TRIGGER\s+on_auth_user_created/i.test(allSql) || /handle_new_user/i.test(allSql);
+  
+  // Audita especificamente se a trigger de novos usuários possui cláusula de idempotência (Anti-Race Condition)
+  const handleNewUserBlock = allSql.match(/FUNCTION\s+(public\.)?handle_new_user[\s\S]*?END;/i);
+  const hasIdempotentTrigger = handleNewUserBlock ? /ON\s+CONFLICT/i.test(handleNewUserBlock[0]) : /ON\s+CONFLICT\s*(\(\s*id\s*\))?\s+DO\s+(NOTHING|UPDATE)/i.test(allSql);
 
-  if (hasProfilesTable && hasProfilesRls && hasUserTrigger) {
-    recordCheck("02", "Substrato Universal de Identidade (public.profiles)", true);
+  if (hasProfilesTable && hasProfilesRls && hasUserTrigger && hasIdempotentTrigger) {
+    recordCheck("02", "Substrato Universal de Identidade (public.profiles + Idempotência ON CONFLICT)", true);
   } else {
+    let missing = [];
+    if (!hasProfilesTable) missing.push("tabela profiles");
+    if (!hasProfilesRls) missing.push("RLS em profiles");
+    if (!hasUserTrigger) missing.push("trigger on_auth_user_created");
+    if (!hasIdempotentTrigger) missing.push("idempotência ON CONFLICT (id) DO NOTHING");
     recordCheck(
       "02",
-      "Substrato Universal de Identidade (public.profiles)",
+      "Substrato Universal de Identidade (public.profiles + Idempotência ON CONFLICT)",
       false,
-      `Tabela profiles, RLS ou trigger de sincronização automática ausentes (Tabela: ${hasProfilesTable}, RLS: ${hasProfilesRls}, Trigger: ${hasUserTrigger}).`
+      `Requisitos de identidade pendentes: ${missing.join(", ")}.`
     );
   }
 }
@@ -275,7 +284,7 @@ const totalPassed = results.filter((r) => r.passed).length;
 const totalFailed = results.length - totalPassed;
 
 if (totalFailed === 0) {
-  console.log(`${BOLD}${GREEN}  🎉 PARABÉNS! 10/10 CHECKS APROVADOS!${RESET}`);
+  console.log(`${BOLD}${GREEN}  🎉 PARABÉNS! ${totalPassed}/${results.length} CHECKS APROVADOS!${RESET}`);
   console.log(`${GREEN}  A aplicação cumpre 100% do Contrato Arquitetural da Fundação (Vespasiano Labs).${RESET}`);
   console.log(`${BOLD}${CYAN}========================================================================${RESET}\n`);
   process.exit(0);
